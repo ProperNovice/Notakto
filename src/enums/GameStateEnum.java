@@ -3,6 +3,7 @@ package enums;
 public enum GameStateEnum {
 
 	START_GAME("start game"),
+	ANIMATING("animating"),
 
 	;
 
