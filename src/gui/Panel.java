@@ -5,12 +5,13 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import utils.Parent;
+import utils.PlatformFX;
 import utils.ShutDown;
 
 public class Panel extends Parent implements EventHandler<MouseEvent> {
 
 	private ImageView background = new ImageView("/images/Background.png");
-	private PanelGame panelGame = new PanelGame();
+	private PanelGame panelGame = null;
 
 	public Panel() {
 
@@ -18,7 +19,30 @@ public class Panel extends Parent implements EventHandler<MouseEvent> {
 		this.background.setOnMousePressed(this);
 
 		this.getChildren().add(this.background);
-		this.getChildren().add(this.panelGame);
+
+		createNewPanelGame();
+
+	}
+
+	public void removeCurrentPanelGame() {
+
+		PlatformFX.runLater(() -> {
+
+			this.panelGame.setVisible(false);
+			this.getChildren().remove(this.panelGame);
+
+		});
+
+	}
+
+	public void createNewPanelGame() {
+
+		PlatformFX.runLater(() -> {
+
+			this.panelGame = new PanelGame(this);
+			this.getChildren().add(this.panelGame);
+
+		});
 
 	}
 

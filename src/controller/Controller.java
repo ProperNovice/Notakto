@@ -18,7 +18,7 @@ public class Controller {
 
 	private void createInstances() {
 
-		Instances.createController(this);
+		Instances.setControllerInstance(this);
 		this.gameStateController = new GameStateController();
 
 	}

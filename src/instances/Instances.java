@@ -8,11 +8,11 @@ public class Instances {
 	private static PanelGame panelGameInstance = null;
 	private static Controller controllerInstance = null;
 
-	public static void createPanelGame(PanelGame panelGame) {
+	public static void setPanelGameInstance(PanelGame panelGame) {
 		panelGameInstance = panelGame;
 	}
 
-	public static void createController(Controller controller) {
+	public static void setControllerInstance(Controller controller) {
 		controllerInstance = controller;
 	}
 
