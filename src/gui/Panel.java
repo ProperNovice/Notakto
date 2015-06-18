@@ -5,7 +5,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import utils.Parent;
-import utils.PlatformFX;
 import utils.ShutDown;
 
 public class Panel extends Parent implements EventHandler<MouseEvent> {
@@ -26,23 +25,15 @@ public class Panel extends Parent implements EventHandler<MouseEvent> {
 
 	public void removeCurrentPanelGame() {
 
-		PlatformFX.runLater(() -> {
-
-			this.panelGame.setVisible(false);
-			this.getChildren().remove(this.panelGame);
-
-		});
+		this.panelGame.setVisible(false);
+		this.getChildren().remove(this.panelGame);
 
 	}
 
 	public void createNewPanelGame() {
 
-		PlatformFX.runLater(() -> {
-
-			this.panelGame = new PanelGame(this);
-			this.getChildren().add(this.panelGame);
-
-		});
+		this.panelGame = new PanelGame(this);
+		this.getChildren().add(this.panelGame);
 
 	}
 

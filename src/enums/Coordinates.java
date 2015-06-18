@@ -2,6 +2,8 @@ package enums;
 
 public enum Coordinates {
 
+	TEXT_PANEL(50, 50),
+
 	;
 
 	private double x = -1, y = -1;
