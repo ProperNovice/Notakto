@@ -1,6 +1,7 @@
 package controller;
 
 import enums.GameStateEnum;
+import enums.TextEnum;
 import gameState.Animating;
 import gameState.GameState;
 import gameState.StartGame;
@@ -35,6 +36,10 @@ public class GameStateController {
 
 		this.currentGameState.handleGameStateChange();
 
+	}
+
+	public void handleTextOptionPressed(TextEnum textEnum) {
+		this.currentGameState.handleTextOptionPressed(textEnum);
 	}
 
 }

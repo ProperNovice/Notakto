@@ -7,18 +7,18 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
 
-public class TextIndicator implements Node {
+public class Text implements Node {
 
 	protected javafx.scene.text.Text text = null;
 
-	public TextIndicator(String text, Parent parent) {
+	public Text(String text, Parent parent) {
 
 		this.text = new javafx.scene.text.Text(text);
 		parent.addNode(this.text);
 
 	}
 
-	public TextIndicator(String text) {
+	public Text(String text) {
 
 		this.text = new javafx.scene.text.Text(text);
 

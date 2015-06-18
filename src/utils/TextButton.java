@@ -5,7 +5,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import utils.EventHandler.EventHandlerAble;
 
-public class TextButton extends TextIndicator {
+public class TextButton extends Text {
 
 	private Polyline polyline = null;
 

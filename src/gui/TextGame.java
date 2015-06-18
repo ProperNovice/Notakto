@@ -4,7 +4,7 @@ import instances.Instances;
 import utils.EventHandler.EventHandlerAble;
 import utils.Text;
 import utils.TextButton;
-import enums.Dimensions;
+import enums.Credentials;
 import enums.TextEnum;
 
 public class TextGame implements EventHandlerAble {
@@ -36,9 +36,9 @@ public class TextGame implements EventHandlerAble {
 		}
 
 		if (this.textEnum.string().contains("\n"))
-			this.text.setHeight(2 * Dimensions.TEXT.y());
+			this.text.setHeight(2 * Credentials.TEXT_HEIGHT.credential());
 		else
-			this.text.setHeight(Dimensions.TEXT.y());
+			this.text.setHeight(Credentials.TEXT_HEIGHT.credential());
 
 		this.text.setVisible(false);
 
