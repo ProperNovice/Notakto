@@ -15,10 +15,6 @@ public class TextController {
 		createTexts();
 	}
 
-	public enum TextTypeEnum {
-		INDICATOR, OPTION
-	}
-
 	private void createTexts() {
 
 		for (TextEnum textEnum : TextEnum.values())
