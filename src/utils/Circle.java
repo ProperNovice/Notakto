@@ -100,15 +100,15 @@ public class Circle implements Node {
 
 	public final void setRadius(double radius) {
 
-		double centerX = this.topLeftX + this.radius;
-		double centerY = this.topLeftY + this.radius;
-
-		this.radius = radius;
-
-		this.topLeftX = centerX - this.radius;
-		this.topLeftY = centerY - this.radius;
-
 		PlatformFX.runLater(() -> {
+
+			double centerX = this.topLeftX + this.radius;
+			double centerY = this.topLeftY + this.radius;
+
+			this.radius = radius;
+
+			this.topLeftX = centerX - this.radius;
+			this.topLeftY = centerY - this.radius;
 
 			this.circle.setRadius(radius);
 			relocate();
