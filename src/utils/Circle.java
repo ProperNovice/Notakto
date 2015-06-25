@@ -53,10 +53,7 @@ public class Circle implements Node {
 		double distance = Math.sqrt(Math.pow(differenceX, 2)
 				+ Math.pow(differenceY, 2));
 
-		if (distance <= this.radius)
-			return true;
-		else
-			return false;
+		return (distance <= this.radius);
 
 	}
 
