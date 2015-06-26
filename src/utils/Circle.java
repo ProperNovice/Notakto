@@ -127,12 +127,10 @@ public class Circle implements Node {
 		PlatformFX.runLater(() -> this.circle.toFront());
 	}
 
-	@Override
 	public double getLayoutX() {
 		return this.circle.getLayoutX();
 	}
 
-	@Override
 	public double getLayoutY() {
 		return this.circle.getLayoutY();
 	}
@@ -143,6 +141,10 @@ public class Circle implements Node {
 
 	public double getCenterY() {
 		return this.topLeftY + this.radius;
+	}
+
+	public double getRadius() {
+		return this.radius;
 	}
 
 }
