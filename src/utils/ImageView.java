@@ -1,7 +1,7 @@
 package utils;
 
-import instances.Instances;
 import gui.PanelGame;
+import instances.Instances;
 import javafx.event.EventHandler;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.image.Image;

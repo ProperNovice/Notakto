@@ -9,7 +9,19 @@ public class EventHandler implements javafx.event.EventHandler<MouseEvent> {
 	private MouseEvent mouseEvent = null;
 
 	public interface EventHandlerAble {
-		public void handleMouseButtonPrimary();
+
+		public default void handleMouseButtonPressedPrimary() {
+		};
+
+		public default void handleMouseButtonPressedSecondary() {
+		};
+
+		public default void handleMouseEntered() {
+		};
+
+		public default void handleMouseExited() {
+		};
+
 	}
 
 	public EventHandler(EventHandlerAble eventHandlerAble) {
@@ -19,14 +31,23 @@ public class EventHandler implements javafx.event.EventHandler<MouseEvent> {
 	@Override
 	public void handle(MouseEvent event) {
 
-		if (event.getEventType().equals(MouseEvent.MOUSE_PRESSED))
-			if (!event.getButton().equals(MouseButton.PRIMARY))
-				return;
-
 		this.mouseEvent = event;
 
-		Executor.runLater(() -> this.eventHandlerAble
-				.handleMouseButtonPrimary());
+		if (event.getEventType().equals(MouseEvent.MOUSE_PRESSED)) {
+
+			if (event.getButton().equals(MouseButton.PRIMARY))
+				Executor.runLater(() -> this.eventHandlerAble
+						.handleMouseButtonPressedPrimary());
+
+			else if (event.getButton().equals(MouseButton.SECONDARY))
+				Executor.runLater(() -> this.eventHandlerAble
+						.handleMouseButtonPressedSecondary());
+
+		} else if (event.getEventType().equals(MouseEvent.MOUSE_ENTERED))
+			Executor.runLater(() -> this.eventHandlerAble.handleMouseEntered());
+
+		else if (event.getEventType().equals(MouseEvent.MOUSE_EXITED))
+			Executor.runLater(() -> this.eventHandlerAble.handleMouseExited());
 
 	}
 
