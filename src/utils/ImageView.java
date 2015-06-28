@@ -99,16 +99,16 @@ public class ImageView implements Node {
 		PlatformFX.runLater(() -> this.imageView.setRotate(value));
 	}
 
-	public final void setOnMouseEntered(EventHandler<? super MouseEvent> value) {
-		PlatformFX.runLater(() -> this.imageView.setOnMouseEntered(value));
-	}
+	public void setEventHandler(EventHandler<? super MouseEvent> value) {
 
-	public final void setOnMouseExited(EventHandler<? super MouseEvent> value) {
-		PlatformFX.runLater(() -> this.imageView.setOnMouseExited(value));
-	}
+		PlatformFX.runLater(() -> {
 
-	public final void setOnMousePressed(EventHandler<? super MouseEvent> value) {
-		PlatformFX.runLater(() -> this.imageView.setOnMousePressed(value));
+			this.imageView.setOnMouseEntered(value);
+			this.imageView.setOnMouseExited(value);
+			this.imageView.setOnMousePressed(value);
+
+		});
+
 	}
 
 	public final void setImage(final Image image) {
