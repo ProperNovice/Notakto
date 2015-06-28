@@ -51,11 +51,11 @@ public class EventHandler implements javafx.event.EventHandler<MouseEvent> {
 
 	}
 
-	public double getX() {
+	public double getEventX() {
 		return this.mouseEvent.getX();
 	}
 
-	public double getY() {
+	public double getEventY() {
 		return this.mouseEvent.getY();
 	}
 
