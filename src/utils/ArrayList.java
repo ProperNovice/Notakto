@@ -106,6 +106,10 @@ public class ArrayList<T> implements Iterable<T> {
 		return this.list.remove(0);
 	}
 
+	public T getLast() {
+		return this.list.get(this.list.size() - 1);
+	}
+
 	public T removeLast() {
 		return this.list.remove(this.list.size() - 1);
 	}
