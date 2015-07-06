@@ -8,7 +8,7 @@ public class Logger {
 		logging = true;
 	}
 
-	public static void log(String log) {
+	public static void log(Object log) {
 
 		if (!logging)
 			return;
@@ -16,7 +16,7 @@ public class Logger {
 		System.out.println(log);
 	}
 
-	public static void logNewLine(String log) {
+	public static void logNewLine(Object log) {
 
 		if (!logging)
 			return;
