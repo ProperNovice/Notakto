@@ -31,6 +31,10 @@ public class Text implements Node {
 		PlatformFX.runLater(() -> this.text.setVisible(value));
 	}
 
+	public boolean isVisible() {
+		return this.text.isVisible();
+	}
+
 	public void toBack() {
 		PlatformFX.runLater(() -> this.text.toBack());
 	}
