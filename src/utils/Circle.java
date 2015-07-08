@@ -128,11 +128,11 @@ public class Circle implements Node {
 	}
 
 	public double getLayoutX() {
-		return this.circle.getLayoutX();
+		return this.topLeftX;
 	}
 
 	public double getLayoutY() {
-		return this.circle.getLayoutY();
+		return this.topLeftY;
 	}
 
 	public double getCenterX() {
