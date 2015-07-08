@@ -97,18 +97,18 @@ public class Animation {
 
 			if (differenceX > differenceY) {
 
-				stepX = ANIMATION_STEP;
-				stepY = differenceY * ANIMATION_STEP / differenceX;
+				this.stepX = ANIMATION_STEP;
+				this.stepY = differenceY * ANIMATION_STEP / differenceX;
 
 			} else if (differenceY > differenceX) {
 
-				stepX = differenceX * ANIMATION_STEP / differenceY;
-				stepY = ANIMATION_STEP;
+				this.stepX = differenceX * ANIMATION_STEP / differenceY;
+				this.stepY = ANIMATION_STEP;
 
 			} else if (differenceX == differenceY) {
 
-				stepX = ANIMATION_STEP;
-				stepY = ANIMATION_STEP;
+				this.stepX = ANIMATION_STEP;
+				this.stepY = ANIMATION_STEP;
 
 			}
 
