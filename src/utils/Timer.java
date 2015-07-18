@@ -65,6 +65,10 @@ public class Timer {
 
 	public void stopTimer() {
 		this.isRunning.set(false);
+
+		if (this.timerClass == null)
+			return;
+
 		this.timerClass.stopTimer();
 	}
 
