@@ -113,7 +113,7 @@ public class Text implements Node {
 		PlatformFX.runLater(() -> this.text.setOnMousePressed(value));
 	}
 
-	public final void setText(String text) {
+	public final void setText(final String text) {
 		PlatformFX.runLater(() -> this.text.setText(text));
 	}
 
