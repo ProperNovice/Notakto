@@ -13,8 +13,4 @@ public class PlatformFX {
 
 	}
 
-	public static boolean isFxApplicationThread() {
-		return Platform.isFxApplicationThread();
-	}
-
 }
