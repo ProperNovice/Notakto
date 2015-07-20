@@ -89,7 +89,6 @@ public class Text implements Node {
 			while (getHeight() <= pixels)
 				setFont(++font);
 
-			font--;
 			setFont(font);
 
 		});
