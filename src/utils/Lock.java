@@ -4,6 +4,10 @@ public class Lock {
 
 	private static Semaphore semaphore = new Semaphore();
 
+	private Lock() {
+
+	}
+
 	private static class Semaphore {
 
 		private java.util.concurrent.Semaphore semaphore = null;
