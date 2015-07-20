@@ -9,7 +9,7 @@ import utils.Logger;
 
 public class GameStateController {
 
-	private GameState currentGameState = null;
+	private GameState currentGameState = new GameState();
 	private GameState startGame = new StartGame();
 	private GameState animating = new Animating();
 
