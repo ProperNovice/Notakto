@@ -35,7 +35,6 @@ public class Executor {
 
 		}
 
-		runLaterFX(runnable);
 	}
 
 	private static void runLaterExecutorService(Runnable runnable) {
