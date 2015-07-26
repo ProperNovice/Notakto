@@ -1,12 +1,23 @@
 package utils;
 
+import javafx.application.Platform;
+
+import com.sun.javafx.tk.Toolkit;
+
 public class Lock {
 
-	private static Semaphore semaphore = new Semaphore();
+	public static Object lockObject = new Object();
+	private static LockType lockType = null;
 
 	private Lock() {
 
 	}
+
+	private enum LockType {
+		FX, EXECUTOR_SERVICE
+	}
+
+	private static Semaphore semaphore = new Semaphore();
 
 	private static class Semaphore {
 
@@ -21,11 +32,13 @@ public class Lock {
 		}
 
 		public void acquirePermit() {
+
 			try {
 				this.semaphore.acquire();
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
+
 		}
 
 		public int availablePermits() {
@@ -37,14 +50,35 @@ public class Lock {
 	public static void lock() {
 
 		Logger.log("lock");
-		semaphore.acquirePermit();
-		Logger.log("unlock");
-		Logger.logNewLine("available permits : " + semaphore.availablePermits());
+
+		if (Platform.isFxApplicationThread()) {
+
+			lockType = LockType.FX;
+			Toolkit.getToolkit().enterNestedEventLoop(lockObject);
+
+		} else if (!Platform.isFxApplicationThread()) {
+
+			lockType = LockType.EXECUTOR_SERVICE;
+			semaphore.acquirePermit();
+
+		}
+
+		Logger.logNewLine("unlock");
+
+		if (!Platform.isFxApplicationThread())
+			Logger.logNewLine("available permits : "
+					+ semaphore.availablePermits());
 
 	}
 
 	public static void unlock() {
-		semaphore.releasePermit();
+
+		if (lockType.equals(LockType.FX))
+			Toolkit.getToolkit().exitNestedEventLoop(lockObject, lockObject);
+
+		else if (lockType.equals(LockType.EXECUTOR_SERVICE))
+			semaphore.releasePermit();
+
 	}
 
 }
