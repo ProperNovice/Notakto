@@ -1,5 +1,6 @@
 package controller;
 
+import javafx.scene.input.KeyCode;
 import enums.GameStateEnum;
 import enums.TextEnum;
 import gameState.Animating;
@@ -40,6 +41,10 @@ public class GameStateController {
 
 	public void handleTextOptionPressed(TextEnum textEnum) {
 		this.currentGameState.handleTextOptionPressed(textEnum);
+	}
+
+	public void handleKeyPressed(KeyCode keyCode) {
+		this.currentGameState.handleKeyPressed(keyCode);
 	}
 
 }

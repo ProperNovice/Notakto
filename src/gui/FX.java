@@ -1,8 +1,10 @@
 package gui;
 
+import instances.Instances;
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
@@ -11,7 +13,7 @@ import utils.Logger;
 import utils.ShutDown;
 import enums.Dimensions;
 
-public class TestFX extends Application {
+public class FX extends Application {
 
 	private Panel panel = null;
 
@@ -26,12 +28,23 @@ public class TestFX extends Application {
 		double width = Dimensions.FRAME.x() + Dimensions.INSETS.x();
 		double height = Dimensions.FRAME.y() + Dimensions.INSETS.y();
 
-		primaryStage.setScene(new Scene(this.panel));
+		Scene scene = new Scene(this.panel);
+
+		scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
+
+			@Override
+			public void handle(KeyEvent event) {
+				Instances.getControllerInstance().gameStateController()
+						.handleKeyPressed(event.getCode());
+			}
+		});
+
+		primaryStage.setScene(scene);
 		primaryStage.setWidth(width);
 		primaryStage.setHeight(height);
 		primaryStage.setResizable(false);
 
-		primaryStage.setTitle("TestFX");
+		primaryStage.setTitle("FX");
 
 		primaryStage
 				.setX((Screen.getPrimary().getBounds().getWidth() - width) / 2);
