@@ -4,6 +4,7 @@ import instances.Instances;
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
@@ -34,8 +35,14 @@ public class FX extends Application {
 
 			@Override
 			public void handle(KeyEvent event) {
+
+				KeyCode keyCode = event.getCode();
+
+				Logger.logNewLine(keyCode + " keyCode pressed");
+
 				Instances.getControllerInstance().gameStateController()
-						.handleKeyPressed(event.getCode());
+						.handleKeyPressed(keyCode);
+
 			}
 		});
 
