@@ -74,9 +74,43 @@ public class Rectangle implements Node {
 
 	@Override
 	public void relocate(double x, double y) {
+
 		this.topLeftX = x;
 		this.topLeftY = y;
 		PlatformFX.runLater(() -> this.rectangle.relocate(x, y));
+
+	}
+
+	public void setWidth(double width) {
+
+		this.dimensionX = width;
+		resizeRectangle();
+
+	}
+
+	public void setHeight(double height) {
+
+		this.dimensionY = height;
+		resizeRectangle();
+
+	}
+
+	private void resizeRectangle() {
+
+		PlatformFX.runLater(() -> {
+			this.rectangle.getPoints().clear();
+			this.rectangle.getPoints().addAll(0.0, 0.0, getWidth(), 0.0,
+					getWidth(), getHeight(), 0.0, getHeight(), 0.0, 0.0);
+		});
+
+	}
+
+	public double getWidth() {
+		return this.dimensionX;
+	}
+
+	public double getHeight() {
+		return this.dimensionY;
 	}
 
 	public final void setFill(Paint value) {

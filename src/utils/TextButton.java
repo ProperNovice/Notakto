@@ -90,6 +90,7 @@ public class TextButton extends Text {
 			this.rectangle.getPoints().addAll(0.0, 0.0, getWidth(), 0.0,
 					getWidth(), getHeight(), 0.0, getHeight(), 0.0, 0.0);
 		});
+
 	}
 
 	@Override
