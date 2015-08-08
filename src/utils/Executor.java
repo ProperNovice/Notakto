@@ -14,11 +14,13 @@ public class Executor {
 	}
 
 	public static void sleep(final long millis) {
+
 		try {
 			Thread.sleep(millis);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
+
 	}
 
 	public static void runLater(Runnable runnable) {
