@@ -31,8 +31,37 @@ public class CoordinatesRelocate {
 
 	}
 
-	public Coordinate removeFirst() {
-		return this.coordinates.removeFirst();
+	public void proceedToNextCoordinates() {
+		this.coordinates.removeFirst();
+	}
+
+	public double getX() {
+		return this.coordinates.getFirst().getX();
+	}
+
+	public double getY() {
+		return this.coordinates.getFirst().getY();
+	}
+
+	private class Coordinate {
+
+		private double x, y;
+
+		public Coordinate(double x, double y) {
+
+			this.x = x;
+			this.y = y;
+
+		}
+
+		public double getX() {
+			return this.x;
+		}
+
+		public double getY() {
+			return this.y;
+		}
+
 	}
 
 }

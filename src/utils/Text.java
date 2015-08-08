@@ -11,13 +11,6 @@ public class Text implements Node {
 
 	protected javafx.scene.text.Text text = null;
 
-	public Text(String text, Parent parent) {
-
-		this.text = new javafx.scene.text.Text(text);
-		parent.addNode(this.text);
-
-	}
-
 	public Text(String text) {
 
 		this.text = new javafx.scene.text.Text(text);

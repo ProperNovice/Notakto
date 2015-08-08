@@ -1,51 +1,33 @@
 package utils;
 
-import instances.Instances;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import utils.EventHandler.EventHandlerAble;
 
 public class TextButton extends Text {
 
-	private Polyline polyline = null;
-
-	public TextButton(String text, EventHandlerAble eventHandlerAble,
-			Parent parent) {
-
-		super(text, parent);
-		createBorder(parent);
-
-		this.polyline.toFront();
-		super.text.toFront();
-
-		super.text.setOnMousePressed(new EventHandler(eventHandlerAble));
-		this.polyline.setOnMousePressed(new EventHandler(eventHandlerAble));
-
-		setEventHandlers();
-
-	}
+	private Rectangle rectangle = null;
 
 	public TextButton(String text, EventHandlerAble eventHandlerAble) {
 
-		super(text, Instances.getPanelGameInstance());
-		createBorder(Instances.getPanelGameInstance());
+		super(text);
+		createBorder();
 
-		this.polyline.toFront();
+		this.rectangle.toFront();
 		super.text.toFront();
 
 		super.text.setOnMousePressed(new EventHandler(eventHandlerAble));
-		this.polyline.setOnMousePressed(new EventHandler(eventHandlerAble));
+		this.rectangle.setOnMousePressed(new EventHandler(eventHandlerAble));
 
 		setEventHandlers();
 
 	}
 
-	private void createBorder(Parent parent) {
+	private void createBorder() {
 
-		this.polyline = new Polyline(super.getWidth(), super.getHeight(),
-				parent);
-		this.polyline.setStroke(null);
-		this.polyline.setFill(Color.WHEAT);
+		this.rectangle = new Rectangle(super.getWidth(), super.getHeight());
+		this.rectangle.setStroke(null);
+		this.rectangle.setFill(Color.WHEAT);
 
 	}
 
@@ -54,7 +36,7 @@ public class TextButton extends Text {
 
 		PlatformFX.runLater(() -> {
 
-			this.polyline.toFront();
+			this.rectangle.toFront();
 			super.text.toFront();
 
 		});
@@ -104,8 +86,8 @@ public class TextButton extends Text {
 	private void resizePolyLine() {
 
 		PlatformFX.runLater(() -> {
-			this.polyline.getPoints().clear();
-			this.polyline.getPoints().addAll(0.0, 0.0, getWidth(), 0.0,
+			this.rectangle.getPoints().clear();
+			this.rectangle.getPoints().addAll(0.0, 0.0, getWidth(), 0.0,
 					getWidth(), getHeight(), 0.0, getHeight(), 0.0, 0.0);
 		});
 	}
@@ -116,7 +98,7 @@ public class TextButton extends Text {
 		PlatformFX.runLater(() -> {
 
 			this.text.relocate(x, y);
-			this.polyline.relocate(x, y);
+			this.rectangle.relocate(x, y);
 
 		});
 
@@ -128,7 +110,7 @@ public class TextButton extends Text {
 		PlatformFX.runLater(() -> {
 
 			this.text.setVisible(value);
-			this.polyline.setVisible(value);
+			this.rectangle.setVisible(value);
 
 		});
 
@@ -140,7 +122,7 @@ public class TextButton extends Text {
 		@Override
 		public void handle(MouseEvent event) {
 
-			polyline.setFill(Color.BLACK);
+			rectangle.setFill(Color.BLACK);
 			text.setFill(Color.WHITE);
 
 		}
@@ -153,7 +135,7 @@ public class TextButton extends Text {
 		@Override
 		public void handle(MouseEvent event) {
 
-			polyline.setFill(Color.WHEAT);
+			rectangle.setFill(Color.WHEAT);
 			text.setFill(Color.BLACK);
 
 		}
@@ -163,9 +145,9 @@ public class TextButton extends Text {
 	private void setEventHandlers() {
 
 		super.text.setOnMouseEntered(new OnMouseEntered());
-		this.polyline.setOnMouseEntered(new OnMouseEntered());
+		this.rectangle.setOnMouseEntered(new OnMouseEntered());
 		super.text.setOnMouseExited(new OnMouseExited());
-		this.polyline.setOnMouseExited(new OnMouseExited());
+		this.rectangle.setOnMouseExited(new OnMouseExited());
 
 	}
 

@@ -32,6 +32,7 @@ public class EventHandler implements javafx.event.EventHandler<MouseEvent> {
 	public void handle(MouseEvent event) {
 
 		this.mouseEvent = event;
+		System.out.println(event.getX() + ", " + event.getY());
 
 		if (event.getEventType().equals(MouseEvent.MOUSE_PRESSED)) {
 
