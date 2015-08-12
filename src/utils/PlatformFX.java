@@ -13,4 +13,9 @@ public class PlatformFX {
 
 	}
 
+	public static void isFxApplicationThreadLogLog() {
+		Logger.logNewLine("isFxApplicationThreadLog -> "
+				+ Platform.isFxApplicationThread());
+	}
+
 }
