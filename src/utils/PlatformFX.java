@@ -13,7 +13,7 @@ public class PlatformFX {
 
 	}
 
-	public static void isFxApplicationThreadLogLog() {
+	public static void isFxApplicationThreadLog() {
 		Logger.logNewLine("isFxThread -> " + Platform.isFxApplicationThread());
 	}
 
