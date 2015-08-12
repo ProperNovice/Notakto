@@ -8,7 +8,7 @@ import utils.ShutDown;
 
 public class Panel extends Parent implements EventHandlerAble {
 
-	private ImageView background = new ImageView("/images/Background.png");
+	private ImageView background = new ImageView("/images/background.png");
 	private PanelGame panelGame = null;
 
 	public Panel() {
