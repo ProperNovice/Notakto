@@ -65,9 +65,10 @@ public class Lock {
 
 		Logger.logNewLine("unlock");
 
-		if (!Platform.isFxApplicationThread())
-			Logger.logNewLine("available permits : "
-					+ semaphore.availablePermits());
+		if (Platform.isFxApplicationThread())
+			return;
+
+		Logger.logNewLine("available permits : " + semaphore.availablePermits());
 
 	}
 
