@@ -10,6 +10,7 @@ import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import utils.Animation;
+import utils.Executor;
 import utils.Logger;
 import utils.ShutDown;
 import enums.Dimensions;
@@ -40,8 +41,8 @@ public class FX extends Application {
 
 				Logger.logNewLine(keyCode + " keyCode pressed");
 
-				Instances.getControllerInstance().gameStateController()
-						.handleKeyPressed(keyCode);
+				Executor.runLater(() -> Instances.getControllerInstance()
+						.gameStateController().handleKeyPressed(keyCode));
 
 			}
 		});
