@@ -12,6 +12,14 @@ public class Text implements Node {
 	protected javafx.scene.text.Text text = null;
 
 	public Text(String text) {
+		createText(text);
+	}
+
+	public Text(int text) {
+		createText(Integer.toString(text));
+	}
+
+	private void createText(String text) {
 
 		this.text = new javafx.scene.text.Text(text);
 
