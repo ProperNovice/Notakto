@@ -74,11 +74,17 @@ public class Lock {
 
 	public static void unlock() {
 
-		if (lockType.equals(LockType.FX))
-			Toolkit.getToolkit().exitNestedEventLoop(lockObject, lockObject);
+		switch (lockType) {
 
-		else if (lockType.equals(LockType.EXECUTOR_SERVICE))
+		case FX:
+			Toolkit.getToolkit().exitNestedEventLoop(lockObject, lockObject);
+			break;
+
+		case EXECUTOR_SERVICE:
 			semaphore.releasePermit();
+			break;
+
+		}
 
 	}
 
