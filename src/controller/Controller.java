@@ -1,8 +1,6 @@
 package controller;
 
 import instances.Instances;
-import utils.Executor;
-import enums.GameStateEnum;
 
 public class Controller {
 
@@ -10,11 +8,7 @@ public class Controller {
 	private TextController textController = null;
 
 	public Controller() {
-
 		createInstances();
-		Executor.runLater(() -> this.gameStateController
-				.setGameState(GameStateEnum.START_GAME));
-
 	}
 
 	private void createInstances() {

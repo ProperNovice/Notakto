@@ -14,6 +14,7 @@ import utils.Executor;
 import utils.Logger;
 import utils.ShutDown;
 import enums.Dimensions;
+import enums.GameStateEnum;
 
 public class FX extends Application {
 
@@ -69,6 +70,9 @@ public class FX extends Application {
 		});
 
 		primaryStage.show();
+
+		Executor.runLater(() -> Instances.getControllerInstance()
+				.gameStateController().setGameState(GameStateEnum.START_GAME));
 
 	}
 
