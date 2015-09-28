@@ -6,7 +6,7 @@ import com.sun.javafx.tk.Toolkit;
 
 public class Lock {
 
-	public static Object lockObject = new Object();
+	private static Object lockObject = new Object();
 	private static LockType lockType = null;
 
 	private Lock() {
