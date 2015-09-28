@@ -100,17 +100,15 @@ public class ImageView implements Node {
 
 	public void setEventHandler(EventHandlerAble eventHandlerAble) {
 
-		PlatformFX
-				.runLater(() -> {
+		PlatformFX.runLater(() -> {
 
-					this.imageView.setOnMouseEntered(new EventHandler(
-							eventHandlerAble));
-					this.imageView.setOnMouseExited(new EventHandler(
-							eventHandlerAble));
-					this.imageView.setOnMousePressed(new EventHandler(
-							eventHandlerAble));
+			EventHandler eventHandler = new EventHandler(eventHandlerAble);
 
-				});
+			this.imageView.setOnMouseEntered(eventHandler);
+			this.imageView.setOnMouseExited(eventHandler);
+			this.imageView.setOnMousePressed(eventHandler);
+
+		});
 
 	}
 
