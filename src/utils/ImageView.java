@@ -2,11 +2,10 @@ package utils;
 
 import gui.PanelGame;
 import instances.Instances;
-import javafx.event.EventHandler;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.image.Image;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Rectangle;
+import utils.EventHandler.EventHandlerAble;
 
 public class ImageView implements Node {
 
@@ -99,15 +98,19 @@ public class ImageView implements Node {
 		PlatformFX.runLater(() -> this.imageView.setRotate(value));
 	}
 
-	public void setEventHandler(EventHandler<? super MouseEvent> value) {
+	public void setEventHandler(EventHandlerAble eventHandlerAble) {
 
-		PlatformFX.runLater(() -> {
+		PlatformFX
+				.runLater(() -> {
 
-			this.imageView.setOnMouseEntered(value);
-			this.imageView.setOnMouseExited(value);
-			this.imageView.setOnMousePressed(value);
+					this.imageView.setOnMouseEntered(new EventHandler(
+							eventHandlerAble));
+					this.imageView.setOnMouseExited(new EventHandler(
+							eventHandlerAble));
+					this.imageView.setOnMousePressed(new EventHandler(
+							eventHandlerAble));
 
-		});
+				});
 
 	}
 
