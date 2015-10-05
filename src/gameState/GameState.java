@@ -27,7 +27,7 @@ public class GameState {
 
 	}
 
-	public GameStateEnum getGameStateEnum() {
+	public final GameStateEnum getGameStateEnum() {
 		return this.gameStateEnum;
 	}
 
