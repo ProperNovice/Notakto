@@ -1,33 +1,36 @@
 package controller;
 
-import javafx.scene.input.KeyCode;
 import enums.GameStateEnum;
 import enums.TextEnum;
 import gameState.Animating;
 import gameState.GameState;
 import gameState.StartGame;
+import javafx.scene.input.KeyCode;
+import utils.ArrayList;
 import utils.Logger;
 
 public class GameStateController {
 
-	private GameState currentGameState = new GameState();
-	private GameState startGame = new StartGame();
-	private GameState animating = new Animating();
+	private GameState currentGameState = null;
+	private ArrayList<GameState> gameStates = new ArrayList<>();
 
 	public GameStateController() {
+
+		this.gameStates.add(new StartGame(GameStateEnum.START_GAME));
+		this.gameStates.add(new Animating(GameStateEnum.ANIMATING));
 
 	}
 
 	public void setGameState(GameStateEnum gameStateEnum) {
 
-		switch (gameStateEnum) {
+		for (GameState gameState : this.gameStates) {
 
-		case START_GAME:
-			this.currentGameState = this.startGame;
-			break;
+			GameStateEnum gameStateEnumTemp = gameState.getGameStateEnum();
 
-		case ANIMATING:
-			this.currentGameState = this.animating;
+			if (!gameStateEnumTemp.equals(gameStateEnum))
+				continue;
+
+			this.currentGameState = gameState;
 			break;
 
 		}
