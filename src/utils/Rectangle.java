@@ -3,10 +3,10 @@ package utils;
 import gui.PanelGame;
 import instances.Instances;
 import javafx.collections.ObservableList;
-import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
+import utils.EventHandler.EventHandlerAble;
 
 public class Rectangle implements Node {
 
@@ -45,6 +45,20 @@ public class Rectangle implements Node {
 			panelGame.addNode(this.rectangle);
 			this.rectangle.setFill(null);
 			this.rectangle.setStroke(Color.BLACK);
+
+		});
+
+	}
+
+	public void setEventHandler(EventHandlerAble eventHandlerAble) {
+
+		PlatformFX.runLater(() -> {
+
+			EventHandler eventHandler = new EventHandler(eventHandlerAble);
+
+			this.rectangle.setOnMouseEntered(eventHandler);
+			this.rectangle.setOnMouseExited(eventHandler);
+			this.rectangle.setOnMousePressed(eventHandler);
 
 		});
 
@@ -121,15 +135,18 @@ public class Rectangle implements Node {
 		PlatformFX.runLater(() -> this.rectangle.setStroke(value));
 	}
 
-	public final void setOnMouseEntered(EventHandler<? super MouseEvent> value) {
+	public final void setOnMouseEntered(
+			javafx.event.EventHandler<? super MouseEvent> value) {
 		PlatformFX.runLater(() -> this.rectangle.setOnMouseEntered(value));
 	}
 
-	public final void setOnMouseExited(EventHandler<? super MouseEvent> value) {
+	public final void setOnMouseExited(
+			javafx.event.EventHandler<? super MouseEvent> value) {
 		PlatformFX.runLater(() -> this.rectangle.setOnMouseExited(value));
 	}
 
-	public final void setOnMousePressed(EventHandler<? super MouseEvent> value) {
+	public final void setOnMousePressed(
+			javafx.event.EventHandler<? super MouseEvent> value) {
 		PlatformFX.runLater(() -> this.rectangle.setOnMousePressed(value));
 	}
 
