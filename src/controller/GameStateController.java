@@ -36,7 +36,7 @@ public class GameStateController {
 		}
 
 		Logger.log("changing gameState");
-		Logger.logNewLine(gameStateEnum.text());
+		Logger.logNewLine(gameStateEnum);
 
 		this.currentGameState.handleGameStateChange();
 
