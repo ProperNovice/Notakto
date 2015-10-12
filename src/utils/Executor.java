@@ -49,4 +49,14 @@ public class Executor {
 		EXECUTOR_SERVICE, FX
 	}
 
+	public static void sleepExecuteRunnableFX(long duration, Runnable runnable) {
+
+		runLaterExecutorService(() -> {
+
+			sleep(duration);
+			runLaterFX(runnable);
+
+		});
+
+	}
 }
