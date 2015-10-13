@@ -197,7 +197,7 @@ public class Animation {
 
 	}
 
-	public static boolean isRunning() {
+	public static boolean isAnimating() {
 
 		if (animationsSynchronous.isEmpty())
 			return false;
