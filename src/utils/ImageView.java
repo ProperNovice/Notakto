@@ -46,6 +46,10 @@ public class ImageView implements Node {
 		PlatformFX.runLater(() -> this.imageView.setVisible(value));
 	}
 
+	public final boolean isVisible() {
+		return this.imageView.isVisible();
+	}
+
 	public void toBack() {
 		PlatformFX.runLater(() -> this.imageView.toBack());
 	}
