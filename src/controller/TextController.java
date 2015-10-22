@@ -10,6 +10,7 @@ public class TextController {
 
 	private ArrayList<TextGame> textGame = new ArrayList<>();
 	private ArrayList<TextGame> textGameShowing = new ArrayList<>();
+	private Coordinates coordinates = Coordinates.TEXT_PANEL;
 
 	public TextController() {
 		createTexts();
@@ -47,8 +48,8 @@ public class TextController {
 
 	private void showText() {
 
-		double x = Coordinates.TEXT_PANEL.x();
-		double y = Coordinates.TEXT_PANEL.y();
+		double x = this.coordinates.x();
+		double y = this.coordinates.y();
 
 		for (TextGame textGame : this.textGameShowing) {
 
@@ -73,6 +74,10 @@ public class TextController {
 
 		this.textGameShowing.clear();
 
+	}
+
+	public void setCoordinates(Coordinates coordinates) {
+		this.coordinates = coordinates;
 	}
 
 }
