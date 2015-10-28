@@ -8,6 +8,7 @@ public class Lock {
 
 	private static Object lockObject = new Object();
 	private static LockType lockType = null;
+	private static Semaphore semaphore = new Semaphore();
 
 	private Lock() {
 
@@ -16,8 +17,6 @@ public class Lock {
 	private enum LockType {
 		FX, EXECUTOR_SERVICE
 	}
-
-	private static Semaphore semaphore = new Semaphore();
 
 	private static class Semaphore {
 
