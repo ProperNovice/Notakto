@@ -2,6 +2,8 @@ package enums;
 
 public enum TextEnum {
 
+	CONTINUE("Continue", TextTypeEnum.OPTION),
+	
 	;
 
 	private String string = null;
