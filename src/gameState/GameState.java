@@ -6,7 +6,7 @@ import controller.Controller;
 import enums.GameStateEnum;
 import enums.TextEnum;
 
-public class GameState {
+public abstract class GameState {
 
 	protected Controller controller = Instances.getControllerInstance();
 	private GameStateEnum gameStateEnum = null;
@@ -15,9 +15,7 @@ public class GameState {
 		this.gameStateEnum = gameStateEnum;
 	}
 
-	public void handleGameStateChange() {
-
-	}
+	public abstract void handleGameStateChange();
 
 	public void handleTextOptionPressed(TextEnum textEnum) {
 

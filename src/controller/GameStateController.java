@@ -2,7 +2,6 @@ package controller;
 
 import enums.GameStateEnum;
 import enums.TextEnum;
-import gameState.Animating;
 import gameState.GameState;
 import gameState.StartGame;
 import javafx.scene.input.KeyCode;
@@ -17,7 +16,6 @@ public class GameStateController {
 	public GameStateController() {
 
 		this.gameStates.add(new StartGame(GameStateEnum.START_GAME));
-		this.gameStates.add(new Animating(GameStateEnum.ANIMATING));
 
 	}
 
