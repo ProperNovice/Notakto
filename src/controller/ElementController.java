@@ -7,9 +7,11 @@ import enums.Element;
 public class ElementController {
 
 	private HashMap<ArrayList<Element>, ArrayList<Element>> equations = new HashMap<>();
+	private ArrayList<ArrayList<Element>> perfectPositions = new ArrayList<>();
 
 	public ElementController() {
 		createEquations();
+		createPerfectPositions();
 	}
 
 	public ArrayList<Element> trimElements(ArrayList<Element> list) {
@@ -104,88 +106,86 @@ public class ElementController {
 
 		// a2 = 1
 
-		ArrayList<Element> key = new ArrayList<>();
-		ArrayList<Element> value = new ArrayList<>();
-
-		key.add(Element.A);
-		key.add(Element.A);
-
-		this.equations.addEntry(key, value);
+		this.equations.addEntry(getElementList(Element.A, Element.A),
+				new ArrayList<Element>());
 
 		// b3 = b
 
-		key = new ArrayList<>();
-		value = new ArrayList<>();
-
-		key.add(Element.B);
-		key.add(Element.B);
-		key.add(Element.B);
-		value.add(Element.B);
-
-		this.equations.addEntry(key, value);
+		this.equations.addEntry(
+				getElementList(Element.B, Element.B, Element.B),
+				getElementList(Element.B));
 
 		// b2c = c
 
-		key = new ArrayList<>();
-		value = new ArrayList<>();
-
-		key.add(Element.B);
-		key.add(Element.B);
-		key.add(Element.C);
-		value.add(Element.C);
-
-		this.equations.addEntry(key, value);
+		this.equations.addEntry(
+				getElementList(Element.B, Element.B, Element.C),
+				getElementList(Element.C));
 
 		// c3 = ac2
 
-		key = new ArrayList<>();
-		value = new ArrayList<>();
-
-		key.add(Element.C);
-		key.add(Element.C);
-		key.add(Element.C);
-		value.add(Element.A);
-		value.add(Element.C);
-		value.add(Element.C);
-
-		this.equations.addEntry(key, value);
+		this.equations.addEntry(
+				getElementList(Element.C, Element.C, Element.C),
+				getElementList(Element.A, Element.C, Element.C));
 
 		// b2d = d
 
-		key = new ArrayList<>();
-		value = new ArrayList<>();
-
-		key.add(Element.B);
-		key.add(Element.B);
-		key.add(Element.D);
-		value.add(Element.D);
-
-		this.equations.addEntry(key, value);
+		this.equations.addEntry(
+				getElementList(Element.B, Element.B, Element.D),
+				getElementList(Element.D));
 
 		// cd = ad
 
-		key = new ArrayList<>();
-		value = new ArrayList<>();
-
-		key.add(Element.C);
-		key.add(Element.D);
-		value.add(Element.A);
-		value.add(Element.D);
-
-		this.equations.addEntry(key, value);
+		this.equations.addEntry(getElementList(Element.C, Element.D),
+				getElementList(Element.A, Element.D));
 
 		// d2 = c2
 
-		key = new ArrayList<>();
-		value = new ArrayList<>();
-
-		key.add(Element.D);
-		key.add(Element.D);
-		value.add(Element.C);
-		value.add(Element.C);
-
-		this.equations.addEntry(key, value);
+		this.equations.addEntry(getElementList(Element.D, Element.D),
+				getElementList(Element.C, Element.C));
 
 	}
 
+	private void createPerfectPositions() {
+
+		this.perfectPositions.add(getElementList(Element.A));
+		this.perfectPositions.add(getElementList(Element.B, Element.B));
+		this.perfectPositions.add(getElementList(Element.B, Element.C));
+		this.perfectPositions.add(getElementList(Element.C, Element.C));
+
+	}
+
+	private ArrayList<Element> getElementList(Element... element) {
+		return new ArrayList<>(element);
+	}
+
+	public boolean isPerfectPosition(ArrayList<Element> list) {
+
+		for (ArrayList<Element> pPosition : this.perfectPositions) {
+
+			if (pPosition.size() != list.size())
+				continue;
+
+			ArrayList<Element> listTemp = list.clone();
+
+			boolean notFound = false;
+
+			for (Element element : pPosition)
+				if (listTemp.contains(element))
+					listTemp.remove(element);
+				else
+					notFound = true;
+
+			if (notFound)
+				continue;
+
+			if (!listTemp.isEmpty())
+				continue;
+
+			return true;
+
+		}
+
+		return false;
+
+	}
 }
