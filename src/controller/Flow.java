@@ -11,7 +11,7 @@ public class Flow {
 
 	public Flow() {
 
-		createGameStateTurn();
+		createGameStateNormalTurn();
 
 	}
 
@@ -31,7 +31,7 @@ public class Flow {
 		this.gameStateResolving.addFirst(gameStateEnum);
 	}
 
-	public void createGameStateTurn() {
+	public void createGameStateNormalTurn() {
 
 	}
 
