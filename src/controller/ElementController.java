@@ -10,8 +10,10 @@ public class ElementController {
 	private ArrayList<ArrayList<Element>> perfectPositions = new ArrayList<>();
 
 	public ElementController() {
+
 		createEquations();
 		createPerfectPositions();
+
 	}
 
 	public ArrayList<Element> trimElements(ArrayList<Element> list) {
