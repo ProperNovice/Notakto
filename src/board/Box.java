@@ -7,6 +7,7 @@ import utils.ImageView;
 import controller.Controller;
 import controller.GameStateController;
 import enums.BoxColor;
+import enums.Dimensions;
 
 public class Box implements EventHandlerAble {
 
@@ -27,6 +28,7 @@ public class Box implements EventHandlerAble {
 		this.board = board;
 
 		this.imageView = new ImageView("empty.png");
+		this.imageView.setWidth(Dimensions.BOX.x());
 		this.imageView.relocate(x, y);
 		this.imageView.setEventHandler(this);
 

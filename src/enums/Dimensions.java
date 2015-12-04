@@ -7,7 +7,7 @@ public enum Dimensions {
 	GAP_BETWEEN_BOXES(3, 3),
 	GAP_BETWEEN_TABLES(20, 20),
 	BOX(100, 100),
-	FRAME(9 * BOX.x() + 6 * GAP_BETWEEN_BOXES.x() + 2 * GAP_BETWEEN_TABLES.x() + 2 * GAP_BETWEEN_BORDERS.x(), 3 * BOX.y() + 2 * GAP_BETWEEN_BOXES.x() + 1 * GAP_BETWEEN_TABLES.x() + Credentials.TEXT_HEIGHT.credential() + 2 * GAP_BETWEEN_BORDERS.x()),
+	FRAME(9 * BOX.x() + 6 * GAP_BETWEEN_BOXES.x() + 2 * GAP_BETWEEN_TABLES.x() + 2 * GAP_BETWEEN_BORDERS.x(), 3 * BOX.y() + 2 * GAP_BETWEEN_BOXES.x() + 1 * GAP_BETWEEN_TABLES.x() + 2 * Credentials.TEXT_HEIGHT.credential() + 2 * GAP_BETWEEN_BORDERS.x()),
 
 	;
 

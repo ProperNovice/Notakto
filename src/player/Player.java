@@ -35,9 +35,8 @@ public class Player {
 		this.textTurn = new Text(text);
 		this.textTurn.setHeight(Credentials.TEXT_HEIGHT.credential());
 
-		double x = Coordinates.TEXT_PLAYER_TOP_RIGHT.x()
-				- this.textTurn.getWidth();
-		double y = Coordinates.TEXT_PLAYER_TOP_RIGHT.y();
+		double x = Coordinates.TEXT_PLAYER.x();
+		double y = Coordinates.TEXT_PLAYER.y();
 
 		this.textTurn.relocate(x, y);
 		this.textTurn.setVisible(false);
@@ -55,9 +54,8 @@ public class Player {
 		this.textEndGame = new Text(text);
 		this.textEndGame.setHeight(Credentials.TEXT_HEIGHT.credential());
 
-		double x = Coordinates.TEXT_PLAYER_TOP_RIGHT.x()
-				- this.textEndGame.getWidth();
-		double y = Coordinates.TEXT_PLAYER_TOP_RIGHT.y();
+		double x = Coordinates.TEXT_PLAYER.x();
+		double y = Coordinates.TEXT_PLAYER.y();
 
 		this.textEndGame.relocate(x, y);
 		this.textEndGame.setVisible(false);
