@@ -35,37 +35,39 @@ public class Player {
 		this.textTurn = new Text(text);
 		this.textTurn.setHeight(Credentials.TEXT_HEIGHT.credential());
 
-		double x = Coordinates.TEXT_PLAYER_TOP_RIGHT.x() - this.textTurn.getWidth();
+		double x = Coordinates.TEXT_PLAYER_TOP_RIGHT.x()
+				- this.textTurn.getWidth();
 		double y = Coordinates.TEXT_PLAYER_TOP_RIGHT.y();
 
 		this.textTurn.relocate(x, y);
 		this.textTurn.setVisible(false);
 
 	}
-	
+
 	private void createTextEndGame() {
-		
+
 		String text = "";
 
 		text += "Player ";
 		text += this.playerOrder.playerOrder();
 		text += " lost";
 
-		this.textTurn = new Text(text);
-		this.textTurn.setHeight(Credentials.TEXT_HEIGHT.credential());
+		this.textEndGame = new Text(text);
+		this.textEndGame.setHeight(Credentials.TEXT_HEIGHT.credential());
 
-		double x = Coordinates.TEXT_PLAYER_TOP_RIGHT.x() - this.textTurn.getWidth();
+		double x = Coordinates.TEXT_PLAYER_TOP_RIGHT.x()
+				- this.textEndGame.getWidth();
 		double y = Coordinates.TEXT_PLAYER_TOP_RIGHT.y();
 
-		this.textTurn.relocate(x, y);
-		this.textTurn.setVisible(false);
-		
+		this.textEndGame.relocate(x, y);
+		this.textEndGame.setVisible(false);
+
 	}
 
 	public void textTurnSetVisible(boolean value) {
 		this.textTurn.setVisible(value);
 	}
-	
+
 	public void textEndGameSetVisibleTrue() {
 		this.textEndGame.setVisible(true);
 	}
