@@ -1,6 +1,7 @@
 package board;
 
 import utils.ArrayList;
+import enums.Dimensions;
 
 public class Board {
 
@@ -14,10 +15,40 @@ public class Board {
 
 	}
 
+	public Board(double x, double y) {
+
+		createBoardWithImages(x, y);
+		createWinningGroups();
+
+	}
+
 	private void createBoard() {
 
 		for (int counter = 1; counter <= 9; counter++)
 			this.board.add(new Box());
+
+	}
+
+	private void createBoardWithImages(double x, double y) {
+
+		double firstX = x;
+		int boxesRelocated = 0;
+
+		for (int counter = 1; counter <= 9; counter++) {
+
+			this.board.add(new Box(x, y, this));
+
+			boxesRelocated++;
+			x += Dimensions.BOX.x() + Dimensions.GAP_BETWEEN_BOXES.x();
+
+			if (boxesRelocated != 3)
+				continue;
+
+			boxesRelocated = 0;
+			x = firstX;
+			y += Dimensions.BOX.y() + Dimensions.GAP_BETWEEN_BOXES.y();
+
+		}
 
 	}
 

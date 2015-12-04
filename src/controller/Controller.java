@@ -9,6 +9,7 @@ public class Controller {
 	private Flow flow = null;
 	private ElementController elementController = null;
 	private BoardController boardController = null;
+	private BoardPatternsController boardPatternsController = null;
 
 	public Controller() {
 		createInstances();
@@ -44,6 +45,10 @@ public class Controller {
 
 	public BoardController boardController() {
 		return this.boardController;
+	}
+
+	public BoardPatternsController boardPatternsController() {
+		return this.boardPatternsController;
 	}
 
 }

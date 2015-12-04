@@ -4,9 +4,13 @@ import enums.GameStateEnum;
 import enums.TextEnum;
 import gameState.GameState;
 import gameState.StartGame;
+import gameState.TurnAI;
+import gameState.TurnPlayer;
 import javafx.scene.input.KeyCode;
 import utils.ArrayList;
 import utils.Logger;
+import board.Board;
+import board.Box;
 
 public class GameStateController {
 
@@ -16,6 +20,8 @@ public class GameStateController {
 	public GameStateController() {
 
 		this.gameStates.add(new StartGame(GameStateEnum.START_GAME));
+		this.gameStates.add(new TurnPlayer(GameStateEnum.TURN_PLAYER));
+		this.gameStates.add(new TurnAI(GameStateEnum.TURN_AI));
 
 	}
 
@@ -46,6 +52,10 @@ public class GameStateController {
 
 	public void handleKeyPressed(KeyCode keyCode) {
 		this.currentGameState.handleKeyPressed(keyCode);
+	}
+
+	public void handleBoxPressed(Box box, Board board) {
+		this.currentGameState.handleBoxPressed(box, board);
 	}
 
 }

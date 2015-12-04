@@ -2,9 +2,12 @@ package enums;
 
 public enum Dimensions {
 
-	FRAME(1366, 768),
 	INSETS(7, 29),
 	GAP_BETWEEN_BORDERS(50, 50),
+	GAP_BETWEEN_BOXES(3, 3),
+	GAP_BETWEEN_TABLES(20, 20),
+	BOX(100, 100),
+	FRAME(9 * BOX.x() + 6 * GAP_BETWEEN_BOXES.x() + 2 * GAP_BETWEEN_TABLES.x() + 2 * GAP_BETWEEN_BORDERS.x(), 768),
 
 	;
 

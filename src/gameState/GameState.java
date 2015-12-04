@@ -2,6 +2,8 @@ package gameState;
 
 import instances.Instances;
 import javafx.scene.input.KeyCode;
+import board.Board;
+import board.Box;
 import controller.Controller;
 import enums.GameStateEnum;
 import enums.TextEnum;
@@ -22,6 +24,19 @@ public abstract class GameState {
 	}
 
 	public void handleKeyPressed(KeyCode keyCode) {
+
+	}
+
+	public final void handleBoxPressed(Box box, Board board) {
+
+		if (!box.isEmpty())
+			return;
+
+		handleBoxNonEmptyPressed(box, board);
+
+	}
+
+	protected void handleBoxNonEmptyPressed(Box box, Board board) {
 
 	}
 
