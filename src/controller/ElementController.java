@@ -30,7 +30,7 @@ public class ElementController {
 					this.equations.getValue(equationElement));
 			list = sortList(list);
 
-			// printTrim(equationElement, listOld, list);
+			printTrim(equationElement, listOld, list);
 
 			list = trimElements(list);
 
@@ -45,17 +45,17 @@ public class ElementController {
 	private void printTrim(ArrayList<Element> equationElement,
 			ArrayList<Element> listOld, ArrayList<Element> list) {
 
-		System.out.println("used");
-		equationElement.printList();
-		System.out.println("->");
-		System.out.println();
-		this.equations.getValue(equationElement).printList();
-		System.out.println("list old");
-		listOld.printList();
-		System.out.println("list new");
-		list.printList();
-		System.out.println("--------");
-		System.out.println();
+		// System.out.println("used");
+		// equationElement.printList();
+		// System.out.println("->");
+		// System.out.println();
+		// this.equations.getValue(equationElement).printList();
+		// System.out.println("list old");
+		// listOld.printList();
+		// System.out.println("list new");
+		// list.printList();
+		// System.out.println("--------");
+		// System.out.println();
 
 	}
 
