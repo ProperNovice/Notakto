@@ -18,10 +18,10 @@ public class StartGame extends GameState {
 
 		printBoardElementPosition();
 
-		startGame(PlayerType.AI, PlayerType.HUMAN);
+		// startGame(PlayerType.AI, PlayerType.HUMAN);
 		// startGame(PlayerType.HUMAN, PlayerType.AI);
 		// startGame(PlayerType.HUMAN, PlayerType.HUMAN);
-		// startGame(PlayerType.AI, PlayerType.AI);
+		startGame(PlayerType.AI, PlayerType.AI);
 
 		// testBoards();
 

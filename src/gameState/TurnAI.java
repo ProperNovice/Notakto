@@ -120,42 +120,33 @@ public class TurnAI extends GameState {
 		ArrayList<Board> boards = super.controller.boardController()
 				.getBoards();
 		ArrayList<Box> boxesAll = super.controller.boardController().getBoxes();
-		ArrayList<Box> boxesPerfectPosition = new ArrayList<>();
+		ArrayList<Box> boxesSettingPerfectPositionInactive = new ArrayList<>();
 
 		while (!boxesAll.isEmpty()) {
 
 			Box box = boxesAll.removeFirst();
+			Board board = box.getBoard();
 
 			box.setNonEmpty();
 
 			ArrayList<Element> elements = getBoardElementsTrimmed(boards);
 
+			box.setEmpty();
+
 			if (super.controller.elementController()
 					.isPerfectPosition(elements))
-				boxesPerfectPosition.add(box);
 
-			box.setEmpty();
+				if (!board.isActive()) {
 
-		}
+					executeBox(box);
+					return;
 
-		ArrayList<Box> boxesSettingBoardInactive = new ArrayList<>();
-
-		for (Box box : boxesPerfectPosition) {
-
-			Board board = box.getBoard();
-			box.setNonEmpty();
-
-			if (!board.isActive())
-				boxesSettingBoardInactive.add(box);
-
-			box.setEmpty();
+				} else
+					boxesSettingPerfectPositionInactive.add(box);
 
 		}
 
-		if (!boxesSettingBoardInactive.isEmpty())
-			executeBox(boxesSettingBoardInactive.getRandom());
-		else
-			executeBox(boxesPerfectPosition.getRandom());
+		executeBox(boxesSettingPerfectPositionInactive.getRandom());
 
 	}
 
