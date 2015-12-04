@@ -27,6 +27,8 @@ public class Player {
 
 		text += "Player ";
 		text += this.playerOrder.playerOrder();
+		text += " - ";
+		text += this.playerType.playerType();
 
 		this.text = new Text(text);
 		this.text.setHeight(Credentials.TEXT_HEIGHT.credential());

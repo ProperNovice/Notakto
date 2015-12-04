@@ -16,6 +16,8 @@ public class ChangePlayer extends GameState {
 	public void handleGameStateChange() {
 
 		printBoards();
+		
+		super.controller.playerController().setCurrentPlayerTextVisible(false);
 
 		super.controller.playerController().changePlayer();
 

@@ -14,7 +14,6 @@ public class TurnHuman extends GameState {
 	@Override
 	public void handleGameStateChange() {
 
-		super.controller.playerController().setCurrentPlayerTextVisible(true);
 		super.controller.textController().showText(TextEnum.MAKE_A_MOVE);
 
 	}

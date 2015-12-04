@@ -3,6 +3,7 @@ package controller;
 import enums.GameStateEnum;
 import enums.TextEnum;
 import gameState.ChangePlayer;
+import gameState.CheckIfGameEnded;
 import gameState.GameState;
 import gameState.StartGame;
 import gameState.TurnAI;
@@ -24,6 +25,8 @@ public class GameStateController {
 		this.gameStates.add(new TurnHuman(GameStateEnum.TURN_HUMAN));
 		this.gameStates.add(new TurnAI(GameStateEnum.TURN_AI));
 		this.gameStates.add(new ChangePlayer(GameStateEnum.CHANGE_PLAYER));
+		this.gameStates.add(new CheckIfGameEnded(
+				GameStateEnum.CHECK_IF_GAME_ENDED));
 
 	}
 

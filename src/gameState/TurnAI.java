@@ -30,6 +30,8 @@ public class TurnAI extends GameState {
 		if (this.executing)
 			return;
 
+		super.controller.textController().concealText();
+
 		this.executing = true;
 
 		handleAI();
