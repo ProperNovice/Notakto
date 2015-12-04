@@ -27,7 +27,7 @@ public class BoardController {
 
 		int boardsPlaced = 0;
 
-		for (int counter = 1; counter <= 5; counter++) {
+		for (int counter = 1; counter <= 6; counter++) {
 
 			this.boardsGame.add(new Board(x, y));
 

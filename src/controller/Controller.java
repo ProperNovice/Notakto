@@ -10,6 +10,7 @@ public class Controller {
 	private ElementController elementController = null;
 	private BoardController boardController = null;
 	private BoardPatternsController boardPatternsController = null;
+	private PlayerController playerController = null;
 
 	public Controller() {
 		createInstances();
@@ -24,6 +25,8 @@ public class Controller {
 		this.flow = new Flow();
 		this.elementController = new ElementController();
 		this.boardController = new BoardController();
+		this.boardPatternsController = new BoardPatternsController();
+		this.playerController = new PlayerController();
 
 	}
 
@@ -49,6 +52,10 @@ public class Controller {
 
 	public BoardPatternsController boardPatternsController() {
 		return this.boardPatternsController;
+	}
+
+	public PlayerController playerController() {
+		return this.playerController;
 	}
 
 }

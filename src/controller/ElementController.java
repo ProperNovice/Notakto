@@ -18,7 +18,7 @@ public class ElementController {
 
 	public ArrayList<Element> trimElements(ArrayList<Element> list) {
 
-		ArrayList<Element> listOld = new ArrayList<>(list);
+		ArrayList<Element> listOld = list.clone();
 
 		for (ArrayList<Element> equationElement : this.equations.getKeys()) {
 

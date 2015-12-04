@@ -5,7 +5,7 @@ import enums.TextEnum;
 import gameState.GameState;
 import gameState.StartGame;
 import gameState.TurnAI;
-import gameState.TurnPlayer;
+import gameState.TurnHuman;
 import javafx.scene.input.KeyCode;
 import utils.ArrayList;
 import utils.Logger;
@@ -20,7 +20,7 @@ public class GameStateController {
 	public GameStateController() {
 
 		this.gameStates.add(new StartGame(GameStateEnum.START_GAME));
-		this.gameStates.add(new TurnPlayer(GameStateEnum.TURN_PLAYER));
+		this.gameStates.add(new TurnHuman(GameStateEnum.TURN_HUMAN));
 		this.gameStates.add(new TurnAI(GameStateEnum.TURN_AI));
 
 	}

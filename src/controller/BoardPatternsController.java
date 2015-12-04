@@ -20,55 +20,64 @@ public class BoardPatternsController {
 		addBoardPattern(new ArrayList<>(), 1);
 		addBoardPattern(getElementList(Element.C, Element.C), 4);
 		addBoardPattern(getElementList(Element.A, Element.D), 0, 1);
+		addBoardPattern(getElementList(Element.A, Element.D), 0, 3); // new
 		addBoardPattern(getElementList(Element.B), 0, 2);
 		addBoardPattern(getElementList(Element.B), 0, 4);
 		addBoardPattern(getElementList(Element.B), 0, 5);
+		addBoardPattern(getElementList(Element.B), 0, 7); // new
 		addBoardPattern(getElementList(Element.A), 0, 8);
 		addBoardPattern(getElementList(Element.A), 1, 3);
 		addBoardPattern(getElementList(Element.B), 1, 4);
 		addBoardPattern(getElementList(Element.A), 1, 7);
 		addBoardPattern(getElementList(Element.B), 0, 1, 3);
 		addBoardPattern(getElementList(Element.A, Element.B), 0, 1, 4);
+		addBoardPattern(getElementList(Element.A, Element.B), 0, 3, 4); // new
 		addBoardPattern(getElementList(Element.D), 0, 1, 5);
+		addBoardPattern(getElementList(Element.D), 0, 3, 7); // new
 		addBoardPattern(getElementList(Element.A), 0, 1, 6);
+		addBoardPattern(getElementList(Element.A), 0, 2, 3); // new
 		addBoardPattern(getElementList(Element.D), 0, 1, 7);
+		addBoardPattern(getElementList(Element.D), 0, 3, 5); // new
 		addBoardPattern(getElementList(Element.D), 0, 1, 8);
+		addBoardPattern(getElementList(Element.D), 0, 3, 8); // new
 		addBoardPattern(getElementList(Element.A), 0, 2, 4);
 		addBoardPattern(getElementList(Element.A, Element.B), 0, 2, 6);
 		addBoardPattern(getElementList(Element.A), 0, 2, 7);
 		addBoardPattern(getElementList(Element.A), 0, 4, 5);
+		addBoardPattern(getElementList(Element.A), 0, 4, 7); // new
 		addBoardPattern(new ArrayList<>(), 0, 5, 7);
 		addBoardPattern(getElementList(Element.A, Element.B), 1, 3, 4);
 		addBoardPattern(getElementList(Element.B), 1, 3, 5);
 		addBoardPattern(getElementList(Element.A), 0, 1, 3, 4);
 		addBoardPattern(getElementList(Element.A), 0, 1, 3, 5);
+		addBoardPattern(getElementList(Element.A), 0, 1, 3, 7); // new
 		addBoardPattern(getElementList(Element.A), 0, 1, 3, 8);
 		addBoardPattern(getElementList(Element.B), 0, 1, 4, 5);
+		addBoardPattern(getElementList(Element.B), 0, 3, 4, 7); // new
+		addBoardPattern(getElementList(Element.B), 0, 2, 3, 7); // new
 		addBoardPattern(getElementList(Element.B), 0, 1, 4, 6);
+		addBoardPattern(getElementList(Element.B), 0, 2, 3, 4); // new
+		addBoardPattern(getElementList(Element.B), 0, 1, 5, 6);
 		addBoardPattern(getElementList(Element.A, Element.B), 0, 1, 5, 7);
+		addBoardPattern(getElementList(Element.A, Element.B), 0, 3, 5, 7); // new
 		addBoardPattern(getElementList(Element.A, Element.B), 0, 1, 5, 8);
 		addBoardPattern(getElementList(Element.B), 0, 1, 6, 7);
 		addBoardPattern(getElementList(Element.B), 0, 1, 6, 8);
+		addBoardPattern(getElementList(Element.B), 0, 2, 3, 8); // new
 		addBoardPattern(getElementList(Element.A), 0, 1, 7, 8);
+		addBoardPattern(getElementList(Element.A), 0, 3, 5, 8); // new
 		addBoardPattern(getElementList(Element.B), 0, 2, 4, 7);
 		addBoardPattern(getElementList(Element.A), 0, 2, 6, 8);
 		addBoardPattern(getElementList(Element.B), 0, 4, 5, 7);
 		addBoardPattern(getElementList(Element.A), 1, 3, 5, 7);
 		addBoardPattern(getElementList(Element.B), 0, 1, 3, 5, 7);
 		addBoardPattern(getElementList(Element.B), 0, 1, 3, 5, 8);
+		addBoardPattern(getElementList(Element.B), 0, 1, 3, 7, 8); // new
 		addBoardPattern(getElementList(Element.A), 0, 1, 4, 5, 6);
+		addBoardPattern(getElementList(Element.A), 0, 2, 3, 4, 7); // new
 		addBoardPattern(getElementList(Element.A), 0, 1, 5, 6, 7);
 		addBoardPattern(getElementList(Element.A), 0, 1, 5, 6, 8);
 		addBoardPattern(getElementList(Element.A), 0, 1, 3, 5, 7, 8);
-
-		for (Board board : this.boardPatterns.getKeys()) {
-
-			board.print();
-			this.boardPatterns.getValue(board).printList();
-			System.out.println("--------------");
-			System.out.println();
-
-		}
 
 	}
 
@@ -90,6 +99,27 @@ public class BoardPatternsController {
 
 		ArrayList<Element> elementsList = new ArrayList<>(elements);
 		return elementsList;
+
+	}
+
+	public ArrayList<Element> getElementList(Board boardOriginal) {
+
+		Board boardClone = boardOriginal.clone();
+
+		for (Board boardTemp : this.boardPatterns.getKeys()) {
+
+			for (int counter = 1; counter <= 4; counter++) {
+
+				if (boardClone.equals(boardTemp))
+					return this.boardPatterns.getValue(boardTemp);
+
+				boardClone.rotate();
+
+			}
+
+		}
+
+		return null;
 
 	}
 

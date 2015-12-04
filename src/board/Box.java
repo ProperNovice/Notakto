@@ -1,11 +1,11 @@
 package board;
 
 import instances.Instances;
-import controller.Controller;
-import controller.GameStateController;
 import utils.EventHandler.EventHandlerAble;
 import utils.Image;
 import utils.ImageView;
+import controller.Controller;
+import controller.GameStateController;
 
 public class Box implements EventHandlerAble {
 
@@ -38,6 +38,10 @@ public class Box implements EventHandlerAble {
 		this.isEmpty = false;
 	}
 
+	public void setEmpty() {
+		this.isEmpty = true;
+	}
+
 	public void setRedX() {
 		this.imageView.setImage(this.redX);
 	}
@@ -54,6 +58,7 @@ public class Box implements EventHandlerAble {
 		return this.isEmpty;
 	}
 
+	@Override
 	public Box clone() {
 		return new Box(this.isEmpty);
 	}

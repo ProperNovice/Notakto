@@ -22,6 +22,10 @@ public class Board {
 
 	}
 
+	private Board(ArrayList<Box> board) {
+		this.board = board;
+	}
+
 	private void createBoard() {
 
 		for (int counter = 1; counter <= 9; counter++)
@@ -119,8 +123,83 @@ public class Board {
 
 	}
 
+	@Override
+	public Board clone() {
+
+		ArrayList<Box> boardClone = new ArrayList<>();
+
+		for (Box box : this.board)
+			boardClone.add(box.clone());
+
+		return new Board(boardClone);
+
+	}
+
 	public void setNonEmpty(int num) {
 		this.board.get(num).setNonEmpty();
+	}
+
+	public void setNonEmpty(Integer... integers) {
+
+		for (Integer integer : integers)
+			if (integer == -1)
+				break;
+			else
+				this.board.get(integer).setNonEmpty();
+
+	}
+
+	public void setAllEmpty() {
+
+		for (Box box : this.board)
+			box.setEmpty();
+
+	}
+
+	public Box getBox(int num) {
+		return this.board.get(num);
+	}
+
+	public boolean equals(Board board) {
+
+		boolean boxThis = false;
+		boolean boxInstance = false;
+
+		for (int counter = 0; counter < 9; counter++) {
+
+			boxThis = this.board.get(counter).isEmpty();
+			boxInstance = board.getBox(counter).isEmpty();
+
+			if (boxThis == boxInstance)
+				continue;
+
+			return false;
+
+		}
+
+		return true;
+
+	}
+
+	public boolean isActive() {
+
+		boolean emptyFound = false;
+
+		for (ArrayList<Integer> winningGroups : this.winningGroups) {
+
+			emptyFound = false;
+
+			for (Integer integer : winningGroups)
+				if (this.board.get(integer).isEmpty())
+					emptyFound = true;
+
+			if (!emptyFound)
+				return false;
+
+		}
+
+		return true;
+
 	}
 
 }
