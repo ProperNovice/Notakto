@@ -72,8 +72,6 @@ public class TurnAI extends GameState {
 					.getElementList(board));
 
 		elements = super.controller.elementController().trimElements(elements);
-		
-		elements.printList();
 
 		return elements;
 

@@ -105,7 +105,6 @@ public class BoardPatternsController {
 	public ArrayList<Element> getElementList(Board boardOriginal) {
 
 		Board boardClone = boardOriginal.clone();
-		boardClone.print();
 
 		for (Board boardTemp : this.boardPatterns.getKeys()) {
 
