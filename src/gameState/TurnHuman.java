@@ -22,7 +22,7 @@ public class TurnHuman extends GameState {
 	protected void handleBoxNonEmptyPressed(Box box, Board board) {
 
 		super.controller.textController().concealText();
-		super.controller.playerController().setCurrentPlayerTextVisible(false);
+		super.controller.playerController().setCurrentPlayerTextTurnVisible(false);
 
 		super.controller.boardController().setBoxNonEmpty(box);
 

@@ -16,15 +16,14 @@ public class ChangePlayer extends GameState {
 	public void handleGameStateChange() {
 
 		printBoards();
-		
-		super.controller.playerController().setCurrentPlayerTextVisible(false);
 
 		super.controller.playerController().changePlayer();
 
 		GameStateEnum gameStateEnum = super.controller.playerController()
 				.getCurrentPlayerType();
 		super.controller.flow().addGameStateFirst(gameStateEnum);
-		super.controller.playerController().setCurrentPlayerTextVisible(true);
+		super.controller.playerController().setCurrentPlayerTextTurnVisible(
+				true);
 
 		super.controller.flow().proceedToNextPhase();
 

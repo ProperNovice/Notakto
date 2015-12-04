@@ -10,18 +10,20 @@ public class Player {
 
 	private PlayerType playerType = null;
 	private PlayerOrder playerOrder = null;
-	private Text text = null;
+	private Text textTurn = null;
+	private Text textEndGame = null;
 
 	public Player(PlayerType playerType, PlayerOrder playerOrder) {
 
 		this.playerType = playerType;
 		this.playerOrder = playerOrder;
 
-		createText();
+		createTextTurn();
+		createTextEndGame();
 
 	}
 
-	private void createText() {
+	private void createTextTurn() {
 
 		String text = "";
 
@@ -30,19 +32,42 @@ public class Player {
 		text += " - ";
 		text += this.playerType.playerType();
 
-		this.text = new Text(text);
-		this.text.setHeight(Credentials.TEXT_HEIGHT.credential());
+		this.textTurn = new Text(text);
+		this.textTurn.setHeight(Credentials.TEXT_HEIGHT.credential());
 
-		double x = Coordinates.TEXT_PLAYER_TOP_RIGHT.x() - this.text.getWidth();
+		double x = Coordinates.TEXT_PLAYER_TOP_RIGHT.x() - this.textTurn.getWidth();
 		double y = Coordinates.TEXT_PLAYER_TOP_RIGHT.y();
 
-		this.text.relocate(x, y);
-		this.text.setVisible(false);
+		this.textTurn.relocate(x, y);
+		this.textTurn.setVisible(false);
 
 	}
+	
+	private void createTextEndGame() {
+		
+		String text = "";
 
-	public void textSetVisible(boolean value) {
-		this.text.setVisible(value);
+		text += "Player ";
+		text += this.playerOrder.playerOrder();
+		text += " lost";
+
+		this.textTurn = new Text(text);
+		this.textTurn.setHeight(Credentials.TEXT_HEIGHT.credential());
+
+		double x = Coordinates.TEXT_PLAYER_TOP_RIGHT.x() - this.textTurn.getWidth();
+		double y = Coordinates.TEXT_PLAYER_TOP_RIGHT.y();
+
+		this.textTurn.relocate(x, y);
+		this.textTurn.setVisible(false);
+		
+	}
+
+	public void textTurnSetVisible(boolean value) {
+		this.textTurn.setVisible(value);
+	}
+	
+	public void textEndGameSetVisibleTrue() {
+		this.textEndGame.setVisible(true);
 	}
 
 	public PlayerType getPlayerType() {

@@ -48,15 +48,19 @@ public class PlayerController {
 
 	}
 
-	public void setCurrentPlayerTextVisible(boolean value) {
+	public void setCurrentPlayerTextTurnVisible(boolean value) {
 
 		if (this.currentPlayer.equals(this.playerI))
-			this.playerII.textSetVisible(false);
+			this.playerII.textTurnSetVisible(false);
 		else if (this.currentPlayer.equals(this.playerII))
-			this.playerI.textSetVisible(false);
+			this.playerI.textTurnSetVisible(false);
 
-		this.currentPlayer.textSetVisible(value);
+		this.currentPlayer.textTurnSetVisible(value);
 
+	}
+
+	public void setCurrentPlayerTextEndGameVisible() {
+		this.currentPlayer.textEndGameSetVisibleTrue();
 	}
 
 }
