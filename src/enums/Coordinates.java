@@ -3,7 +3,7 @@ package enums;
 public enum Coordinates {
 
 	GAME_FIRST(Dimensions.GAP_BETWEEN_BORDERS.x(), Dimensions.GAP_BETWEEN_BORDERS.y()),
-	TEXT_PANEL(GAME_FIRST.x() + 3 * Dimensions.BOX.y() + 2 * Dimensions.GAP_BETWEEN_BOXES.y() + Dimensions.GAP_BETWEEN_TABLES.y(), GAME_FIRST.y()),
+	TEXT_PANEL(GAME_FIRST.x(), GAME_FIRST.y() + 3 * Dimensions.BOX.y() + 2 * Dimensions.GAP_BETWEEN_BOXES.y() + Dimensions.GAP_BETWEEN_TABLES.y()),
 	
 	;
 

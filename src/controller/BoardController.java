@@ -2,16 +2,21 @@ package controller;
 
 import utils.ArrayList;
 import board.Board;
+import board.Box;
 import enums.Coordinates;
+import enums.Credentials;
 import enums.Dimensions;
 
 public class BoardController {
 
-	private ArrayList<Board> boardsGame = new ArrayList<>();
+	private ArrayList<Board> boards = new ArrayList<>();
+	private ArrayList<Box> boxes = new ArrayList<>();
+	private Box boxLastPlayed = null;
 
 	public BoardController() {
 
 		createBoards();
+		createBoxes();
 
 	}
 
@@ -25,11 +30,12 @@ public class BoardController {
 		gap += 2 * Dimensions.GAP_BETWEEN_BOXES.x();
 		gap += Dimensions.GAP_BETWEEN_TABLES.x();
 
+		int totalBoards = Credentials.TOTAL_BOARDS.credential();
 		int boardsPlaced = 0;
 
-		for (int counter = 1; counter <= 6; counter++) {
+		for (int counter = 1; counter <= totalBoards; counter++) {
 
-			this.boardsGame.add(new Board(x, y));
+			this.boards.add(new Board(x, y));
 
 			boardsPlaced++;
 			x += gap;
@@ -45,6 +51,42 @@ public class BoardController {
 			y += Dimensions.GAP_BETWEEN_TABLES.y();
 
 		}
+
+	}
+
+	private void createBoxes() {
+
+		for (Board board : this.boards)
+			this.boxes.addAll(board.getBoxes());
+
+	}
+
+	public void setBoxNonEmpty(Box box) {
+
+		if (this.boxLastPlayed != null)
+			this.boxLastPlayed.setColorPreviouslyPlayed();
+
+		box.setNonEmpty();
+		box.setColorJustPlayed();
+		this.boxes.remove(box);
+		this.boxLastPlayed = box;
+
+	}
+
+	public void setBoardInactive(Board board) {
+
+		this.boards.remove(board);
+
+		board.setWinningGroupsColor();
+		board.setInactive();
+
+		ArrayList<Box> boxClone = this.boxes.clone();
+
+		for (Box box : boxClone)
+			if (box.getBoard().equals(board))
+				this.boxes.remove(box);
+
+		this.boxLastPlayed = null;
 
 	}
 

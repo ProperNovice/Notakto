@@ -1,12 +1,9 @@
 package gameState;
 
-import utils.ArrayList;
-import utils.Logger;
-import utils.ShutDown;
 import board.Board;
 import board.Box;
-import enums.Element;
 import enums.GameStateEnum;
+import enums.TextEnum;
 
 public class TurnHuman extends GameState {
 
@@ -17,35 +14,17 @@ public class TurnHuman extends GameState {
 	@Override
 	public void handleGameStateChange() {
 
+		super.controller.textController().showText(TextEnum.CONTINUE);
+
 	}
 
 	@Override
 	protected void handleBoxNonEmptyPressed(Box box, Board board) {
 
-		box.setNonEmpty();
-		box.setRedX();
+		super.controller.boardController().setBoxNonEmpty(box);
 
-		board.print();
-
-		if (!board.isActive()) {
-
-			System.out.println("not active");
-			return;
-
-		}
-
-		ArrayList<Element> elementList = super.controller
-				.boardPatternsController().getElementList(board);
-
-		if (elementList != null)
-			elementList.printList();
-		else {
-
-			Logger.logNewLine("board not found");
-			board.print();
-			ShutDown.execute();
-
-		}
+		if (!board.isActive())
+			super.controller.boardController().setBoardInactive(board);
 
 	}
 

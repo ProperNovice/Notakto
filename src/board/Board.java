@@ -1,12 +1,15 @@
 package board;
 
 import utils.ArrayList;
+import utils.Logger;
+import utils.ShutDown;
 import enums.Dimensions;
 
 public class Board {
 
 	private ArrayList<Box> board = new ArrayList<>();
 	private ArrayList<ArrayList<Integer>> winningGroups = new ArrayList<>();
+	private int boxesTimeReturned = 0;
 
 	public Board() {
 
@@ -199,6 +202,49 @@ public class Board {
 		}
 
 		return true;
+
+	}
+
+	public void setWinningGroupsColor() {
+
+		for (ArrayList<Integer> winningGroups : this.winningGroups) {
+
+			boolean notWinningGroup = false;
+
+			for (Integer integer : winningGroups)
+				if (this.board.get(integer).isEmpty())
+					notWinningGroup = true;
+
+			if (notWinningGroup)
+				continue;
+
+			for (Integer integer : winningGroups)
+				this.board.get(integer).setColorWinningGroup();
+
+		}
+
+	}
+
+	public void setInactive() {
+
+		for (Box box : this.board)
+			if (box.isEmpty())
+				box.setVisibleFalse();
+
+	}
+
+	public ArrayList<Box> getBoxes() {
+
+		this.boxesTimeReturned++;
+
+		if (this.boxesTimeReturned > 1) {
+
+			Logger.logNewLine("Board.getBoxes() called more than once");
+			ShutDown.execute();
+
+		}
+
+		return this.board;
 
 	}
 

@@ -19,7 +19,7 @@ public class StartGame extends GameState {
 
 		startGame(PlayerType.HUMAN, PlayerType.AI);
 
-		testBoards();
+//		testBoards();
 
 	}
 

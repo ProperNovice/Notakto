@@ -3,6 +3,7 @@ package enums;
 public enum Credentials {
 
 	TEXT_HEIGHT(50),
+	TOTAL_BOARDS(3),
 
 	;
 

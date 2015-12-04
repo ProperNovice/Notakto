@@ -6,14 +6,16 @@ import utils.Image;
 import utils.ImageView;
 import controller.Controller;
 import controller.GameStateController;
+import enums.BoxColor;
 
 public class Box implements EventHandlerAble {
 
 	private boolean isEmpty = true;
 	private ImageView imageView = null;
-	private Image redX = new Image("redX.png");
-	private Image greenX = new Image("greenX.png");
-	private Image blueX = new Image("blueX.png");
+	private Image previouslyPlayed = new Image(
+			BoxColor.PREVIOUSLY_PLAYED.boxColor());
+	private Image winningGroup = new Image(BoxColor.WINNING_GROUP.boxColor());
+	private Image justPlayed = new Image(BoxColor.JUST_PLAYED.boxColor());
 	private Board board = null;
 
 	public Box() {
@@ -42,16 +44,16 @@ public class Box implements EventHandlerAble {
 		this.isEmpty = true;
 	}
 
-	public void setRedX() {
-		this.imageView.setImage(this.redX);
+	public void setColorPreviouslyPlayed() {
+		this.imageView.setImage(this.previouslyPlayed);
 	}
 
-	public void setGreenX() {
-		this.imageView.setImage(this.greenX);
+	public void setColorWinningGroup() {
+		this.imageView.setImage(this.winningGroup);
 	}
 
-	public void setBlueX() {
-		this.imageView.setImage(this.blueX);
+	public void setColorJustPlayed() {
+		this.imageView.setImage(this.justPlayed);
 	}
 
 	public boolean isEmpty() {
@@ -72,6 +74,14 @@ public class Box implements EventHandlerAble {
 
 		gameStateController.handleBoxPressed(this, this.board);
 
+	}
+
+	public void setVisibleFalse() {
+		this.imageView.setVisible(false);
+	}
+
+	public Board getBoard() {
+		return this.board;
 	}
 
 }
