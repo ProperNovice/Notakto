@@ -19,7 +19,7 @@ public class PlayerController {
 
 		this.playerI = new Player(playerTypeI, PlayerOrder.I);
 		this.playerII = new Player(playerTypeII, PlayerOrder.II);
-		this.currentPlayer = this.playerI;
+		this.currentPlayer = this.playerII;
 
 	}
 
