@@ -4,6 +4,7 @@ import instances.Instances;
 import javafx.scene.input.KeyCode;
 import utils.ArrayList;
 import board.Board;
+import board.Box;
 import enums.GameStateEnum;
 import enums.TextEnum;
 
@@ -30,6 +31,11 @@ public class CheckIfGameEnded extends GameState {
 
 		}
 
+	}
+
+	@Override
+	public void handleBoxPressed(Box box, Board board) {
+		restart();
 	}
 
 	@Override
