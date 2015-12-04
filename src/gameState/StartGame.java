@@ -1,7 +1,6 @@
 package gameState;
 
 import enums.GameStateEnum;
-import enums.PlayerType;
 
 public class StartGame extends GameState {
 
@@ -12,20 +11,7 @@ public class StartGame extends GameState {
 	@Override
 	public void handleGameStateChange() {
 
-		// startGame(PlayerType.AI, PlayerType.HUMAN);
-		// startGame(PlayerType.HUMAN, PlayerType.AI);
-		// startGame(PlayerType.HUMAN, PlayerType.HUMAN);
-		startGame(PlayerType.AI, PlayerType.AI);
-
-		// testBoards();
-
-	}
-
-	private void startGame(PlayerType playerTypeI, PlayerType playerTypeII) {
-
-		super.controller.playerController().setPlayers(playerTypeI,
-				playerTypeII);
-
+		super.controller.flow().addGameStateFirst(GameStateEnum.OPTIONS);
 		super.controller.flow().proceedToNextPhase();
 
 	}

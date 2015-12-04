@@ -4,7 +4,6 @@ import utils.ArrayList;
 import board.Board;
 import board.Box;
 import enums.Coordinates;
-import enums.Credentials;
 import enums.Dimensions;
 
 public class BoardController {
@@ -15,12 +14,16 @@ public class BoardController {
 
 	public BoardController() {
 
-		createBoards();
+	}
+
+	public void create(int boards) {
+
+		createBoards(boards);
 		createBoxes();
 
 	}
 
-	private void createBoards() {
+	private void createBoards(int boards) {
 
 		double firstX = Coordinates.GAME_FIRST.x();
 		double x = firstX;
@@ -30,10 +33,9 @@ public class BoardController {
 		gap += 2 * Dimensions.GAP_BETWEEN_BOXES.x();
 		gap += Dimensions.GAP_BETWEEN_TABLES.x();
 
-		int totalBoards = Credentials.TOTAL_BOARDS.credential();
 		int boardsPlaced = 0;
 
-		for (int counter = 1; counter <= totalBoards; counter++) {
+		for (int counter = 1; counter <= boards; counter++) {
 
 			this.boards.add(new Board(x, y));
 

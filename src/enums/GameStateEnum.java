@@ -7,5 +7,6 @@ public enum GameStateEnum {
 	TURN_AI,
 	CHANGE_PLAYER,
 	CHECK_IF_GAME_ENDED,
+	OPTIONS,
 
 }

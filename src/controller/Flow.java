@@ -33,8 +33,8 @@ public class Flow {
 
 	public void createGameStateNormalTurn() {
 
-		this.gameStateNormalTurn.add(GameStateEnum.CHECK_IF_GAME_ENDED);
 		this.gameStateNormalTurn.add(GameStateEnum.CHANGE_PLAYER);
+		this.gameStateNormalTurn.add(GameStateEnum.CHECK_IF_GAME_ENDED);
 
 	}
 

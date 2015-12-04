@@ -6,6 +6,15 @@ public enum TextEnum {
 	MAKE_A_MOVE("Make a move", TextTypeEnum.INDICATOR),
 	PROCEED("Proceed", TextTypeEnum.OPTION),
 	RESTART("Restart", TextTypeEnum.OPTION),
+	BOARDS("Boards", TextTypeEnum.INDICATOR),
+	ONE("1", TextTypeEnum.OPTION),
+	TWO("2", TextTypeEnum.OPTION),
+	THREE("3", TextTypeEnum.OPTION),
+	PLAYERS("Players", TextTypeEnum.INDICATOR),
+	HUMAN_VS_AI("Human vs AI", TextTypeEnum.OPTION),
+	AI_VS_AI("AI vs AI", TextTypeEnum.OPTION),
+	AI_VS_HUMAN("AI vs Human", TextTypeEnum.OPTION),
+	HUMAN_VS_HUMAN("Human vs Human", TextTypeEnum.OPTION),
 	
 	;
 

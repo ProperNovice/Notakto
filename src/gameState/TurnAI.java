@@ -24,16 +24,36 @@ public class TurnAI extends GameState {
 
 	}
 
-	@Override
-	public void handleTextOptionPressed(TextEnum textEnum) {
+	private boolean canExecute() {
 
 		if (this.executing)
-			return;
+			return false;
 
-		super.controller.playerController().setCurrentPlayerTextTurnVisible(false);
+		super.controller.playerController().setCurrentPlayerTextTurnVisible(
+				false);
 		super.controller.textController().concealText();
 
 		this.executing = true;
+
+		return true;
+
+	}
+
+	@Override
+	public void handleBoxPressed(Box box, Board board) {
+
+		if (!canExecute())
+			return;
+
+		handleAI();
+
+	}
+
+	@Override
+	public void handleTextOptionPressed(TextEnum textEnum) {
+
+		if (!canExecute())
+			return;
 
 		handleAI();
 
@@ -42,13 +62,8 @@ public class TurnAI extends GameState {
 	@Override
 	public void handleKeyPressed(KeyCode keyCode) {
 
-		if (this.executing)
+		if (!canExecute())
 			return;
-		
-		super.controller.playerController().setCurrentPlayerTextTurnVisible(false);
-		super.controller.textController().concealText();
-
-		this.executing = true;
 
 		handleAI();
 

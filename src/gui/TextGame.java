@@ -54,6 +54,10 @@ public class TextGame implements EventHandlerAble {
 
 	}
 
+	public double getWidth() {
+		return this.text.getWidth();
+	}
+
 	public void relocate(double x, double y) {
 		this.text.relocate(x, y);
 	}
