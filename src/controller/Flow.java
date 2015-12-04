@@ -33,6 +33,8 @@ public class Flow {
 
 	public void createGameStateNormalTurn() {
 
+		this.gameStateNormalTurn.add(GameStateEnum.CHANGE_PLAYER);
+		
 	}
 
 }

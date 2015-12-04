@@ -1,13 +1,15 @@
 package controller;
 
+import player.Player;
 import enums.GameStateEnum;
+import enums.PlayerOrder;
 import enums.PlayerType;
 
 public class PlayerController {
 
-	private PlayerType playerI = null;
-	private PlayerType playerII = null;
-	private PlayerType currentPlayer = null;
+	private Player playerI = null;
+	private Player playerII = null;
+	private Player currentPlayer = null;
 
 	public PlayerController() {
 
@@ -15,13 +17,13 @@ public class PlayerController {
 
 	public void setPlayers(PlayerType playerTypeI, PlayerType playerTypeII) {
 
-		this.playerI = playerTypeI;
-		this.playerII = playerTypeII;
+		this.playerI = new Player(playerTypeI, PlayerOrder.I);
+		this.playerII = new Player(playerTypeII, PlayerOrder.II);
 		this.currentPlayer = this.playerI;
 
 	}
 
-	public void changeCurrentPlayer() {
+	public void changePlayer() {
 
 		if (this.currentPlayer.equals(this.playerI))
 			this.currentPlayer = this.playerII;
@@ -32,7 +34,7 @@ public class PlayerController {
 
 	public GameStateEnum getCurrentPlayerType() {
 
-		switch (this.currentPlayer) {
+		switch (this.currentPlayer.getPlayerType()) {
 
 		case AI:
 			return GameStateEnum.TURN_AI;
@@ -45,4 +47,16 @@ public class PlayerController {
 		return null;
 
 	}
+
+	public void setCurrentPlayerTextVisible(boolean value) {
+
+		if (this.currentPlayer.equals(this.playerI))
+			this.playerII.textSetVisible(false);
+		else if (this.currentPlayer.equals(this.playerII))
+			this.playerI.textSetVisible(false);
+
+		this.currentPlayer.textSetVisible(value);
+
+	}
+
 }

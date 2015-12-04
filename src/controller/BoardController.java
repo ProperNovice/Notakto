@@ -90,4 +90,12 @@ public class BoardController {
 
 	}
 
+	public ArrayList<Board> getBoards() {
+		return this.boards.clone();
+	}
+
+	public ArrayList<Box> getBoxes() {
+		return this.boxes.clone();
+	}
+
 }

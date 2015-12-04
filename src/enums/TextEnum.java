@@ -3,6 +3,8 @@ package enums;
 public enum TextEnum {
 
 	CONTINUE("Continue", TextTypeEnum.OPTION),
+	MAKE_A_MOVE("Make a move", TextTypeEnum.INDICATOR),
+	PROCEED("Proceed", TextTypeEnum.OPTION),
 	
 	;
 

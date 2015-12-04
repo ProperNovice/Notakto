@@ -14,17 +14,23 @@ public class TurnHuman extends GameState {
 	@Override
 	public void handleGameStateChange() {
 
-		super.controller.textController().showText(TextEnum.CONTINUE);
+		super.controller.playerController().setCurrentPlayerTextVisible(true);
+		super.controller.textController().showText(TextEnum.MAKE_A_MOVE);
 
 	}
 
 	@Override
 	protected void handleBoxNonEmptyPressed(Box box, Board board) {
 
+		super.controller.textController().concealText();
+		super.controller.playerController().setCurrentPlayerTextVisible(false);
+
 		super.controller.boardController().setBoxNonEmpty(box);
 
 		if (!board.isActive())
 			super.controller.boardController().setBoardInactive(board);
+
+		super.controller.flow().proceedToNextPhase();
 
 	}
 
