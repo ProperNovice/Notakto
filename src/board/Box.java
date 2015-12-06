@@ -16,8 +16,10 @@ public class Box implements EventHandlerAble {
 	private ImageView imageView = null;
 	private Image previouslyPlayed = new Image(
 			BoxColor.PREVIOUSLY_PLAYED.boxColor());
+	private Image empty = new Image("empty.png");
 	private Image winningGroup = new Image(BoxColor.WINNING_GROUP.boxColor());
 	private Image justPlayed = new Image(BoxColor.JUST_PLAYED.boxColor());
+	private Image suggested = new Image(BoxColor.SUGGESTED.boxColor());
 	private Board board = null;
 
 	public Box() {
@@ -28,7 +30,7 @@ public class Box implements EventHandlerAble {
 
 		this.board = board;
 
-		this.imageView = new ImageView("empty.png");
+		this.imageView = new ImageView(this.empty);
 		this.imageView.setWidth(Dimensions.BOX.x());
 		this.imageView.relocate(x, y);
 		this.imageView.setEventHandler(this);
@@ -59,6 +61,14 @@ public class Box implements EventHandlerAble {
 		this.imageView.setImage(this.justPlayed);
 	}
 
+	public void setColorSuggested() {
+		this.imageView.setImage(this.suggested);
+	}
+
+	public void setColorEmpty() {
+		this.imageView.setImage(this.empty);
+	}
+
 	public boolean isEmpty() {
 		return this.isEmpty;
 	}
@@ -75,7 +85,7 @@ public class Box implements EventHandlerAble {
 		GameStateController gameStateController = controller
 				.gameStateController();
 
-		gameStateController.handleBoxPressed(this, this.board);
+		gameStateController.handleBoxPressedPrimary(this, this.board);
 
 	}
 

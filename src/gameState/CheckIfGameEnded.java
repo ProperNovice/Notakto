@@ -34,7 +34,7 @@ public class CheckIfGameEnded extends GameState {
 	}
 
 	@Override
-	public void handleBoxPressed(Box box, Board board) {
+	public void handleBoxPressedPrimary(Box box, Board board) {
 		restart();
 	}
 

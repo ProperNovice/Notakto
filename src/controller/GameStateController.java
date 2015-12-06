@@ -7,6 +7,7 @@ import gameState.CheckIfGameEnded;
 import gameState.GameState;
 import gameState.Options;
 import gameState.StartGame;
+import gameState.SuggestMove;
 import gameState.TurnAI;
 import gameState.TurnHuman;
 import javafx.scene.input.KeyCode;
@@ -29,6 +30,7 @@ public class GameStateController {
 		this.gameStates.add(new CheckIfGameEnded(
 				GameStateEnum.CHECK_IF_GAME_ENDED));
 		this.gameStates.add(new Options(GameStateEnum.OPTIONS));
+		this.gameStates.add(new SuggestMove(GameStateEnum.SUGGEST_MOVE));
 
 	}
 
@@ -61,8 +63,8 @@ public class GameStateController {
 		this.currentGameState.handleKeyPressed(keyCode);
 	}
 
-	public void handleBoxPressed(Box box, Board board) {
-		this.currentGameState.handleBoxPressed(box, board);
+	public void handleBoxPressedPrimary(Box box, Board board) {
+		this.currentGameState.handleBoxPressedPrimary(box, board);
 	}
 
 }

@@ -8,5 +8,6 @@ public enum GameStateEnum {
 	CHANGE_PLAYER,
 	CHECK_IF_GAME_ENDED,
 	OPTIONS,
+	SUGGEST_MOVE,
 
 }

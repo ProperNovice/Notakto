@@ -40,7 +40,7 @@ public class TurnAI extends GameState {
 	}
 
 	@Override
-	public void handleBoxPressed(Box box, Board board) {
+	public void handleBoxPressedPrimary(Box box, Board board) {
 
 		if (!canExecute())
 			return;

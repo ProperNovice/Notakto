@@ -27,7 +27,7 @@ public abstract class GameState {
 
 	}
 
-	public void handleBoxPressed(Box box, Board board) {
+	public void handleBoxPressedPrimary(Box box, Board board) {
 
 		if (!box.isEmpty())
 			return;
