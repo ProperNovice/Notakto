@@ -35,8 +35,6 @@ public class SuggestMove extends GameState {
 
 			ArrayList<Element> elements = getBoardElementsTrimmed(boards);
 
-			box.setEmpty();
-
 			if (super.controller.elementController()
 					.isPerfectPosition(elements))
 
@@ -46,7 +44,12 @@ public class SuggestMove extends GameState {
 				else
 					boxesSettingPerfectPositionActive.add(box);
 
+			box.setEmpty();
+
 		}
+
+		System.out.println(boxesSettingPerfectPositionInactive.size());
+		System.out.println(boxesSettingPerfectPositionActive.size());
 
 		if (!boxesSettingPerfectPositionInactive.isEmpty())
 			this.boxesSuggested.addAll(boxesSettingPerfectPositionInactive);
