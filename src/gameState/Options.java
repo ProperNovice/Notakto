@@ -1,5 +1,6 @@
 package gameState;
 
+import javafx.scene.input.KeyCode;
 import enums.Credentials;
 import enums.Dimensions;
 import enums.GameStateEnum;
@@ -14,7 +15,7 @@ public class Options extends GameState {
 	private ArrayList<TextGame> players = new ArrayList<>();
 	private int totalBoards = -1;
 	private TextEnum playersEnum = null;
-	private TextGame restartWithLastSetting = null;
+	private TextGame restartLastGame = null;
 
 	public Options(GameStateEnum gameStateEnum) {
 
@@ -60,9 +61,8 @@ public class Options extends GameState {
 
 		x = Dimensions.GAP_BETWEEN_BORDERS.x();
 
-		this.restartWithLastSetting = new TextGame(
-				TextEnum.RESTART_WITH_LAST_SETTINGS);
-		this.restartWithLastSetting.relocate(x, y);
+		this.restartLastGame = new TextGame(TextEnum.RESTART_LAST_GAME);
+		this.restartLastGame.relocate(x, y);
 
 	}
 
@@ -79,12 +79,14 @@ public class Options extends GameState {
 			textGame.setVisible(true);
 
 		if (LastSettingsController.hasLastSettings())
-			this.restartWithLastSetting.setVisible(true);
+			this.restartLastGame.setVisible(true);
 
 	}
 
 	@Override
 	public void handleTextOptionPressed(TextEnum textEnum) {
+
+		this.restartLastGame.setVisible(false);
 
 		switch (textEnum) {
 
@@ -123,18 +125,14 @@ public class Options extends GameState {
 			this.playersEnum = textEnum;
 			break;
 
-		case RESTART_WITH_LAST_SETTINGS:
-			setVisibleFalse(this.boards);
-			setVisibleFalse(this.players);
-			restartWithLastSettings();
-			break;
+		case RESTART_LAST_GAME:
+			restartLastGame();
+			return;
 
 		default:
 			break;
 
 		}
-
-		this.restartWithLastSetting.setVisible(false);
 
 		if (this.totalBoards == -1)
 			return;
@@ -146,6 +144,16 @@ public class Options extends GameState {
 
 	}
 
+	@Override
+	public void handleKeyPressed(KeyCode keyCode) {
+
+		if (!LastSettingsController.hasLastSettings())
+			return;
+
+		restartLastGame();
+
+	}
+
 	private void setVisibleFalse(ArrayList<TextGame> list) {
 
 		for (TextGame textGame : list)
@@ -153,10 +161,16 @@ public class Options extends GameState {
 
 	}
 
-	private void restartWithLastSettings() {
+	private void restartLastGame() {
+
+		this.restartLastGame.setVisible(false);
+		setVisibleFalse(this.boards);
+		setVisibleFalse(this.players);
 
 		this.totalBoards = LastSettingsController.getTotalBoards();
 		this.playersEnum = LastSettingsController.getPlayersEnum();
+
+		startGame();
 
 	}
 
