@@ -16,11 +16,8 @@ public class Options extends GameState {
 	private TextEnum playersEnum = null;
 
 	public Options(GameStateEnum gameStateEnum) {
-		super(gameStateEnum);
-	}
 
-	@Override
-	public void handleGameStateChange() {
+		super(gameStateEnum);
 
 		this.boards.add(new TextGame(TextEnum.BOARDS));
 		this.boards.add(new TextGame(TextEnum.ONE));
@@ -63,49 +60,56 @@ public class Options extends GameState {
 	}
 
 	@Override
+	public void handleGameStateChange() {
+
+		this.totalBoards = -1;
+		this.playersEnum = null;
+
+		for (TextGame textGame : this.boards)
+			textGame.setVisible(true);
+
+		for (TextGame textGame : this.players)
+			textGame.setVisible(true);
+
+	}
+
+	@Override
 	public void handleTextOptionPressed(TextEnum textEnum) {
 
 		switch (textEnum) {
 
 		case ONE:
 			setVisibleFalse(this.boards);
-			this.boards.clear();
 			this.totalBoards = 1;
 			break;
 
 		case TWO:
 			setVisibleFalse(this.boards);
-			this.boards.clear();
 			this.totalBoards = 2;
 			break;
 
 		case THREE:
 			setVisibleFalse(this.boards);
-			this.boards.clear();
 			this.totalBoards = 3;
 			break;
 
 		case HUMAN_VS_AI:
 			setVisibleFalse(this.players);
-			this.players.clear();
 			this.playersEnum = textEnum;
 			break;
 
 		case AI_VS_HUMAN:
 			setVisibleFalse(this.players);
-			this.players.clear();
 			this.playersEnum = textEnum;
 			break;
 
 		case HUMAN_VS_HUMAN:
 			setVisibleFalse(this.players);
-			this.players.clear();
 			this.playersEnum = textEnum;
 			break;
 
 		case AI_VS_AI:
 			setVisibleFalse(this.players);
-			this.players.clear();
 			this.playersEnum = textEnum;
 			break;
 

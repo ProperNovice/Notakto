@@ -15,6 +15,7 @@ public enum TextEnum {
 	AI_VS_AI("AI vs AI", TextTypeEnum.OPTION),
 	AI_VS_HUMAN("AI vs Human", TextTypeEnum.OPTION),
 	HUMAN_VS_HUMAN("Human vs Human", TextTypeEnum.OPTION),
+	RESTART_WITH_LAST_SETTINGS("Restart with last settings", TextTypeEnum.OPTION),
 	
 	;
 
