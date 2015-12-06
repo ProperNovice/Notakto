@@ -23,38 +23,24 @@ public class SuggestMove extends GameState {
 		ArrayList<Board> boards = super.controller.boardController()
 				.getBoards();
 		ArrayList<Box> boxesAll = super.controller.boardController().getBoxes();
-		ArrayList<Box> boxesSettingPerfectPositionInactive = new ArrayList<>();
-		ArrayList<Box> boxesSettingPerfectPositionActive = new ArrayList<>();
 
 		while (!boxesAll.isEmpty()) {
 
 			Box box = boxesAll.removeFirst();
-			Board board = box.getBoard();
 
 			box.setNonEmpty();
 
 			ArrayList<Element> elements = getBoardElementsTrimmed(boards);
 
-			if (super.controller.elementController()
-					.isPerfectPosition(elements))
-
-				if (!board.isActive())
-					boxesSettingPerfectPositionInactive.add(box);
-
-				else
-					boxesSettingPerfectPositionActive.add(box);
-
 			box.setEmpty();
 
+			if (!super.controller.elementController().isPerfectPosition(
+					elements))
+				continue;
+
+			this.boxesSuggested.add(box);
+
 		}
-
-		System.out.println(boxesSettingPerfectPositionInactive.size());
-		System.out.println(boxesSettingPerfectPositionActive.size());
-
-		if (!boxesSettingPerfectPositionInactive.isEmpty())
-			this.boxesSuggested.addAll(boxesSettingPerfectPositionInactive);
-		else
-			this.boxesSuggested.addAll(boxesSettingPerfectPositionActive);
 
 		for (Box box : this.boxesSuggested)
 			box.setColorSuggested();
