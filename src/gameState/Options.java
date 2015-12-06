@@ -14,6 +14,7 @@ public class Options extends GameState {
 	private ArrayList<TextGame> players = new ArrayList<>();
 	private int totalBoards = -1;
 	private TextEnum playersEnum = null;
+	private TextGame restartWithLastSetting = null;
 
 	public Options(GameStateEnum gameStateEnum) {
 
@@ -57,6 +58,12 @@ public class Options extends GameState {
 
 		}
 
+		x = Dimensions.GAP_BETWEEN_BORDERS.x();
+
+		this.restartWithLastSetting = new TextGame(
+				TextEnum.RESTART_WITH_LAST_SETTINGS);
+		this.restartWithLastSetting.relocate(x, y);
+
 	}
 
 	@Override
@@ -70,6 +77,9 @@ public class Options extends GameState {
 
 		for (TextGame textGame : this.players)
 			textGame.setVisible(true);
+
+		if (LastSettingsController.hasLastSettings())
+			this.restartWithLastSetting.setVisible(true);
 
 	}
 
@@ -113,10 +123,18 @@ public class Options extends GameState {
 			this.playersEnum = textEnum;
 			break;
 
+		case RESTART_WITH_LAST_SETTINGS:
+			setVisibleFalse(this.boards);
+			setVisibleFalse(this.players);
+			restartWithLastSettings();
+			break;
+
 		default:
 			break;
 
 		}
+
+		this.restartWithLastSetting.setVisible(false);
 
 		if (this.totalBoards == -1)
 			return;
@@ -135,7 +153,17 @@ public class Options extends GameState {
 
 	}
 
+	private void restartWithLastSettings() {
+
+		this.totalBoards = LastSettingsController.getTotalBoards();
+		this.playersEnum = LastSettingsController.getPlayersEnum();
+
+	}
+
 	private void startGame() {
+
+		LastSettingsController.setLastSettings(this.totalBoards,
+				this.playersEnum);
 
 		super.controller.boardController().create(this.totalBoards);
 

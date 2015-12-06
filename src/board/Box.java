@@ -1,5 +1,6 @@
 package board;
 
+import gui.PanelGame;
 import instances.Instances;
 import utils.EventHandler.EventHandlerAble;
 import utils.Image;
@@ -75,6 +76,14 @@ public class Box implements EventHandlerAble {
 				.gameStateController();
 
 		gameStateController.handleBoxPressed(this, this.board);
+
+	}
+
+	@Override
+	public void handleMouseButtonPressedSecondary() {
+
+		PanelGame panelGame = Instances.getPanelGameInstance();
+		panelGame.restartGame();
 
 	}
 

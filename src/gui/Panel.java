@@ -1,13 +1,12 @@
 package gui;
 
 import instances.Instances;
-import enums.GameStateEnum;
 import javafx.scene.image.ImageView;
 import utils.EventHandler;
 import utils.EventHandler.EventHandlerAble;
 import utils.Executor;
 import utils.Parent;
-import utils.ShutDown;
+import enums.GameStateEnum;
 
 public class Panel extends Parent implements EventHandlerAble {
 
@@ -48,7 +47,7 @@ public class Panel extends Parent implements EventHandlerAble {
 
 	@Override
 	public void handleMouseButtonPressedSecondary() {
-		ShutDown.execute();
+		this.panelGame.restartGame();
 	}
 
 }
