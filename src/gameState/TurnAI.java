@@ -139,7 +139,7 @@ public class TurnAI extends GameState {
 		ArrayList<Board> boards = super.controller.boardController()
 				.getBoards();
 		ArrayList<Box> boxesAll = super.controller.boardController().getBoxes();
-		ArrayList<Box> boxesSettingPerfectPositionInactive = new ArrayList<>();
+		ArrayList<Box> boxesSettingPerfectPositionActive = new ArrayList<>();
 
 		while (!boxesAll.isEmpty()) {
 
@@ -161,11 +161,11 @@ public class TurnAI extends GameState {
 					return;
 
 				} else
-					boxesSettingPerfectPositionInactive.add(box);
+					boxesSettingPerfectPositionActive.add(box);
 
 		}
 
-		executeBox(boxesSettingPerfectPositionInactive.getRandom());
+		executeBox(boxesSettingPerfectPositionActive.getRandom());
 
 	}
 
