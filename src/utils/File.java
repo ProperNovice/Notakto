@@ -5,7 +5,6 @@ import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
 
 public class File {
 
@@ -36,7 +35,7 @@ public class File {
 
 			while (!list.isEmpty()) {
 
-				bufferedWriter.write(list.remove(0));
+				bufferedWriter.write(list.removeFirst());
 				bufferedWriter.newLine();
 
 			}
