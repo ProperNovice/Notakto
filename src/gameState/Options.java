@@ -1,5 +1,6 @@
 package gameState;
 
+import controller.LastSettingsController;
 import javafx.scene.input.KeyCode;
 import enums.Credentials;
 import enums.Dimensions;
@@ -15,7 +16,7 @@ public class Options extends GameState {
 	private ArrayList<TextGame> players = new ArrayList<>();
 	private int totalBoards = -1;
 	private TextEnum playersEnum = null;
-	private TextGame restartLastGame = null;
+	private TextGame restartWithLastSettings = null;
 
 	public Options(GameStateEnum gameStateEnum) {
 
@@ -61,8 +62,9 @@ public class Options extends GameState {
 
 		x = Dimensions.GAP_BETWEEN_BORDERS.x();
 
-		this.restartLastGame = new TextGame(TextEnum.RESTART_LAST_GAME);
-		this.restartLastGame.relocate(x, y);
+		this.restartWithLastSettings = new TextGame(
+				TextEnum.RESTART_WITH_LAST_SETTINGS);
+		this.restartWithLastSettings.relocate(x, y);
 
 	}
 
@@ -79,14 +81,14 @@ public class Options extends GameState {
 			textGame.setVisible(true);
 
 		if (LastSettingsController.hasLastSettings())
-			this.restartLastGame.setVisible(true);
+			this.restartWithLastSettings.setVisible(true);
 
 	}
 
 	@Override
 	public void handleTextOptionPressed(TextEnum textEnum) {
 
-		this.restartLastGame.setVisible(false);
+		this.restartWithLastSettings.setVisible(false);
 
 		switch (textEnum) {
 
@@ -125,8 +127,8 @@ public class Options extends GameState {
 			this.playersEnum = textEnum;
 			break;
 
-		case RESTART_LAST_GAME:
-			restartLastGame();
+		case RESTART_WITH_LAST_SETTINGS:
+			restartWithLastSettings();
 			return;
 
 		default:
@@ -150,7 +152,7 @@ public class Options extends GameState {
 		if (!LastSettingsController.hasLastSettings())
 			return;
 
-		restartLastGame();
+		restartWithLastSettings();
 
 	}
 
@@ -161,9 +163,9 @@ public class Options extends GameState {
 
 	}
 
-	private void restartLastGame() {
+	private void restartWithLastSettings() {
 
-		this.restartLastGame.setVisible(false);
+		this.restartWithLastSettings.setVisible(false);
 		setVisibleFalse(this.boards);
 		setVisibleFalse(this.players);
 

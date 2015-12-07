@@ -1,4 +1,4 @@
-package gameState;
+package controller;
 
 import enums.TextEnum;
 
