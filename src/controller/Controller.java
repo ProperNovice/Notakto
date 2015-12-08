@@ -11,6 +11,7 @@ public class Controller {
 	private BoardController boardController = null;
 	private BoardPatternsController boardPatternsController = null;
 	private PlayerController playerController = null;
+	private LastSettingsController lastSettingsController = null;
 
 	public Controller() {
 		createInstances();
@@ -27,6 +28,7 @@ public class Controller {
 		this.boardController = new BoardController();
 		this.boardPatternsController = new BoardPatternsController();
 		this.playerController = new PlayerController();
+		this.lastSettingsController = new LastSettingsController();
 
 	}
 
@@ -56,6 +58,10 @@ public class Controller {
 
 	public PlayerController playerController() {
 		return this.playerController;
+	}
+
+	public LastSettingsController lastSettingsController() {
+		return this.lastSettingsController;
 	}
 
 }

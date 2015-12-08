@@ -1,35 +1,38 @@
 package controller;
 
+import java.io.Serializable;
+
+import utils.Serialization;
 import enums.TextEnum;
 
-public class LastSettingsController {
+@SuppressWarnings("serial")
+public class LastSettingsController implements Serializable {
 
-	private static int totalBoards = -1;
-	private static TextEnum playersEnum = null;
-	private static boolean hasLastSettings = false;
+	private int totalBoards = -1;
+	private TextEnum playersEnum = null;
+	private boolean hasLastSettings = false;
 
-	private LastSettingsController() {
+	public void setLastSettings(int totalBoards, TextEnum playersEnums) {
 
-	}
-
-	public static void setLastSettings(int totalBoardsTemp,
-			TextEnum playersEnumTemp) {
-
-		hasLastSettings = true;
-		totalBoards = totalBoardsTemp;
-		playersEnum = playersEnumTemp;
+		this.hasLastSettings = true;
+		this.totalBoards = totalBoards;
+		this.playersEnum = playersEnums;
 
 	}
 
-	public static int getTotalBoards() {
+	public void writeToFile() {
+		Serialization.writeToFile(this);
+	}
+
+	public int getTotalBoards() {
 		return totalBoards;
 	}
 
-	public static TextEnum getPlayersEnum() {
+	public TextEnum getPlayersEnum() {
 		return playersEnum;
 	}
 
-	public static boolean hasLastSettings() {
+	public boolean hasLastSettings() {
 		return hasLastSettings;
 	}
 

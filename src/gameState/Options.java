@@ -1,13 +1,12 @@
 package gameState;
 
-import controller.LastSettingsController;
-import javafx.scene.input.KeyCode;
 import enums.Credentials;
 import enums.Dimensions;
 import enums.GameStateEnum;
 import enums.PlayerType;
 import enums.TextEnum;
 import gui.TextGame;
+import javafx.scene.input.KeyCode;
 import utils.ArrayList;
 
 public class Options extends GameState {
@@ -80,7 +79,7 @@ public class Options extends GameState {
 		for (TextGame textGame : this.players)
 			textGame.setVisible(true);
 
-		if (LastSettingsController.hasLastSettings())
+		if (super.controller.lastSettingsController().hasLastSettings())
 			this.restartWithLastSettings.setVisible(true);
 
 	}
@@ -149,7 +148,7 @@ public class Options extends GameState {
 	@Override
 	public void handleKeyPressed(KeyCode keyCode) {
 
-		if (!LastSettingsController.hasLastSettings())
+		if (!super.controller.lastSettingsController().hasLastSettings())
 			return;
 
 		restartWithLastSettings();
@@ -169,8 +168,10 @@ public class Options extends GameState {
 		setVisibleFalse(this.boards);
 		setVisibleFalse(this.players);
 
-		this.totalBoards = LastSettingsController.getTotalBoards();
-		this.playersEnum = LastSettingsController.getPlayersEnum();
+		this.totalBoards = super.controller.lastSettingsController()
+				.getTotalBoards();
+		this.playersEnum = super.controller.lastSettingsController()
+				.getPlayersEnum();
 
 		startGame();
 
@@ -178,8 +179,9 @@ public class Options extends GameState {
 
 	private void startGame() {
 
-		LastSettingsController.setLastSettings(this.totalBoards,
-				this.playersEnum);
+		super.controller.lastSettingsController().setLastSettings(
+				this.totalBoards, this.playersEnum);
+		super.controller.lastSettingsController().writeToFile();
 
 		super.controller.boardController().create(this.totalBoards);
 
@@ -212,6 +214,7 @@ public class Options extends GameState {
 			break;
 
 		}
+
 		super.controller.playerController().setPlayers(playerTypeI,
 				playerTypeII);
 
