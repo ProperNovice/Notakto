@@ -126,6 +126,23 @@ public class Board {
 
 	}
 
+	public void mirror() {
+
+		ArrayList<Box> boardOriginal = this.board.clone();
+		this.board.clear();
+
+		this.board.add(boardOriginal.get(6));
+		this.board.add(boardOriginal.get(7));
+		this.board.add(boardOriginal.get(8));
+		this.board.add(boardOriginal.get(3));
+		this.board.add(boardOriginal.get(4));
+		this.board.add(boardOriginal.get(5));
+		this.board.add(boardOriginal.get(0));
+		this.board.add(boardOriginal.get(1));
+		this.board.add(boardOriginal.get(2));
+
+	}
+
 	@Override
 	public Board clone() {
 
