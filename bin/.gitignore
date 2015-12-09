@@ -1,7 +1,8 @@
-/gameState/
+/board/
 /controller/
 /enums/
-/board/
+/gameState/
 /gui/
+/instances/
+/player/
 /utils/
-/images/
