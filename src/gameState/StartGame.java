@@ -23,6 +23,8 @@ public class StartGame extends GameState {
 
 		super.controller.flow().addGameStateFirst(GameStateEnum.OPTIONS);
 		super.controller.flow().proceedToNextPhase();
+		
+//		testBoards();
 
 	}
 
@@ -58,11 +60,11 @@ public class StartGame extends GameState {
 		Board board = new Board();
 
 		for (a = 0; a < 9; a++)
-			for (b = a + 1; b < 9; b++)
-				for (c = b + 1; c < 9; c++)
-					for (d = c + 1; d < 9; d++)
-						for (e = d + 1; e < 9; e++)
-							for (f = e + 1; f < 9; f++)
+//			for (b = a + 1; b < 9; b++)
+//				for (c = b + 1; c < 9; c++)
+//					for (d = c + 1; d < 9; d++)
+//						for (e = d + 1; e < 9; e++)
+//							for (f = e + 1; f < 9; f++)
 
 							{
 
